@@ -1,6 +1,8 @@
 import emailjs from "@emailjs/browser"
 import { motion } from "framer-motion"
 import { useEffect } from "react"
+import certificates from "./data/certificates"
+
 
 const revealCenter = {
   hidden: { opacity: 0, scale: 0.9 },
@@ -814,24 +816,22 @@ export default function App() {
     <div className="flex gap-8 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
 
 
-      {[
-        "software-testing.png",
-        "fullstack-techciti.png",
-        "google-analytics.png",
-        "paper-certificate.jpg",
-        "conference-certificate.jpg"
-      ].map(cert => (
-        <div
-          key={cert}
-          className="snap-start min-w-[320px] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition p-4 flex items-center justify-center"
-        >
-          <img
-            src={`/certificates/${cert}`}
-            alt="Certificate"
-            className="max-h-72 object-contain transition-transform duration-300 hover:scale-105"
-          />
-        </div>
-      ))}
+      {certificates.map(cert => (
+  <div
+    key={cert.id}
+    className="snap-start min-w-[320px] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition p-4 flex flex-col items-center"
+  >
+    <img
+      src={cert.image}
+      alt={cert.title}
+      className="max-h-72 object-contain transition-transform duration-300 hover:scale-105"
+    />
+    <p className="mt-3 text-sm text-slate-600 text-center">
+      {cert.title}
+    </p>
+  </div>
+))}
+
 
     </div>
   </div>
