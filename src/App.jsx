@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser"
 import { motion } from "framer-motion"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import certificates from "./data/certificates"
 
 
@@ -9,37 +9,28 @@ const revealCenter = {
   visible: { opacity: 1, scale: 1 }
 }
 
-const revealLeft = {
-  hidden: { opacity: 0, x: -80 },
-  visible: { opacity: 1, x: 0 }
-}
-
-const revealRight = {
-  hidden: { opacity: 0, x: 80 },
-  visible: { opacity: 1, x: 0 }
-}
-
-const revealUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0 }
-}
-
-
 export default function App() {
+  const [isScrollingDown, setIsScrollingDown] = useState(false)
+
   useEffect(() => {
-  const bar = document.getElementById("scroll-progress")
-  if (!bar) return
+    const bar = document.getElementById("scroll-progress")
+    if (!bar) return
 
-  const handleScroll = () => {
-    const scrollTop = window.scrollY
-    const docHeight = document.body.scrollHeight - window.innerHeight
-    const progress = (scrollTop / docHeight) * 100
-    bar.style.width = `${progress}%`
-  }
+    let lastScrollY = window.scrollY
 
-  window.addEventListener("scroll", handleScroll)
-  return () => window.removeEventListener("scroll", handleScroll)
-}, [])
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      const docHeight = document.body.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+      bar.style.width = `${progress}%`
+
+      setIsScrollingDown(scrollTop > lastScrollY)
+      lastScrollY = scrollTop
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
     <div className="bg-slate-50 text-slate-800 font-sans">
@@ -99,6 +90,7 @@ export default function App() {
 </nav>
 
 
+      <div className={`transition-all duration-300 ${isScrollingDown ? "blur-[2px]" : "blur-0"}`}>
      {/* HERO SECTION */}
 <section className="relative overflow-hidden">
   <div className="max-w-6xl mx-auto px-6 pt-28 pb-32 grid md:grid-cols-2 gap-16 items-center">
@@ -965,6 +957,7 @@ export default function App() {
   </div>
 </motion.section>
 
+      </div>
     </div>
   )
 }
