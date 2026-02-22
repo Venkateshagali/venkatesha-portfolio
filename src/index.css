@@ -144,4 +144,13 @@ html {
   }
 }
 
+.section-focus-transition {
+  transition: filter 220ms ease, opacity 220ms ease;
+}
+
+.section-out-of-focus {
+  filter: blur(4px);
+  opacity: 0.45;
+}
+
 

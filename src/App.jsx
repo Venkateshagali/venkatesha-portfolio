@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser"
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import certificates from "./data/certificates"
 
 
@@ -10,32 +10,50 @@ const revealCenter = {
 }
 
 export default function App() {
-  const [isScrollingDown, setIsScrollingDown] = useState(false)
-
   useEffect(() => {
     const bar = document.getElementById("scroll-progress")
     if (!bar) return
-
-    let lastScrollY = window.scrollY
 
     const handleScroll = () => {
       const scrollTop = window.scrollY
       const docHeight = document.body.scrollHeight - window.innerHeight
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
       bar.style.width = `${progress}%`
-
-      setIsScrollingDown(scrollTop > lastScrollY)
-      lastScrollY = scrollTop
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll("[data-scroll-focus]"))
+    if (!sections.length) return
+
+    sections.forEach((section) => section.classList.add("section-out-of-focus"))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("section-out-of-focus")
+          } else {
+            entry.target.classList.add("section-out-of-focus")
+          }
+        })
+      },
+      {
+        threshold: 0.35,
+        rootMargin: "-5% 0px -15% 0px",
+      }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="bg-slate-50 text-slate-800 font-sans">
       <div id="scroll-progress" className="scroll-progress"></div>
-
 
       {/* NAVBAR */}
 <nav className="fixed top-0 w-full bg-white/80 backdrop-blur border-b border-slate-200 z-50">
@@ -90,9 +108,8 @@ export default function App() {
 </nav>
 
 
-      <div className={`transition-all duration-300 ${isScrollingDown ? "blur-[2px]" : "blur-0"}`}>
      {/* HERO SECTION */}
-<section className="relative overflow-hidden">
+<section data-scroll-focus className="relative overflow-hidden section-focus-transition">
   <div className="max-w-6xl mx-auto px-6 pt-28 pb-32 grid md:grid-cols-2 gap-16 items-center">
 
     {/* LEFT CONTENT */}
@@ -204,8 +221,9 @@ export default function App() {
 
       {/* ABOUT + EDUCATION */}
 <motion.section
+  data-scroll-focus
   id="about"
-  className="bg-white reveal reveal-center"
+  className="bg-white reveal reveal-center section-focus-transition"
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -314,7 +332,9 @@ export default function App() {
 
       {/* WHAT I DO */}
 <motion.section
+  data-scroll-focus
   id="skills"
+  className="section-focus-transition"
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -390,7 +410,9 @@ export default function App() {
 </motion.section>
 {/* TECHNICAL SKILLS */}
 <motion.section
+  data-scroll-focus
   id="technical-skills"
+  className="section-focus-transition"
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -502,7 +524,9 @@ export default function App() {
 
       {/* Internship Experience */}
 <motion.section
+  data-scroll-focus
   id="experience"
+  className="section-focus-transition"
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -576,7 +600,9 @@ export default function App() {
 
       {/* PROJECTS */}
 <motion.section
+  data-scroll-focus
   id="projects"
+  className="section-focus-transition"
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -735,7 +761,9 @@ export default function App() {
       
       {/* PUBLICATION */}
 <motion.section
+  data-scroll-focus
   id="publication"
+  className="section-focus-transition"
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -787,7 +815,9 @@ export default function App() {
 
      {/* CERTIFICATES */}
 <motion.section
+  data-scroll-focus
   id="certificates"
+  className="section-focus-transition"
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -835,7 +865,9 @@ export default function App() {
 
      {/* CONTACT */}
 <motion.section
+  data-scroll-focus
   id="contact"
+  className="section-focus-transition"
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -957,7 +989,6 @@ export default function App() {
   </div>
 </motion.section>
 
-      </div>
     </div>
   )
 }
