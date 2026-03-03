@@ -122,7 +122,7 @@ export default function App() {
 >
 
 
-      <p className="text-indigo-600 font-medium mb-3">Hello, I’m</p>
+      <p className="text-indigo-600 font-medium mb-3">Hello, I'm</p>
 
       <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
         Venkatesha S
@@ -159,11 +159,11 @@ export default function App() {
       {/* STATS */}
       <div className="mt-10 flex gap-10 text-sm text-slate-600">
         <div>
-          <p className="text-xl font-semibold text-slate-900">6+</p>
+          <p className="text-xl font-semibold text-slate-900">7+</p>
           <p>Projects</p>
         </div>
         <div>
-          <p className="text-xl font-semibold text-slate-900">2</p>
+          <p className="text-xl font-semibold text-slate-900">3</p>
           <p>Internships</p>
         </div>
         <div>
@@ -295,7 +295,7 @@ export default function App() {
         {/* MCA */}
         <div>
           <span className="text-sm text-indigo-600 font-medium">
-            2023 – 2025
+            2023 - 2025
           </span>
           <h4 className="mt-1 font-semibold text-slate-900">
             Master of Computer Applications (MCA)
@@ -352,7 +352,7 @@ export default function App() {
       {/* Software Development */}
       <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
         <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
-          💻
+          SD
         </div>
         <h4 className="font-semibold text-slate-900 mb-3">
           Software Development
@@ -366,7 +366,7 @@ export default function App() {
       {/* Full Stack */}
       <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
         <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
-          🌐
+          FS
         </div>
         <h4 className="font-semibold text-slate-900 mb-3">
           Full-Stack Development
@@ -380,7 +380,7 @@ export default function App() {
       {/* Cloud & Backend */}
       <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
         <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
-          ☁️
+          CB
         </div>
         <h4 className="font-semibold text-slate-900 mb-3">
           Cloud & Backend
@@ -394,7 +394,7 @@ export default function App() {
       {/* Data Analysis */}
       <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
         <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
-          📊
+          DA
         </div>
         <h4 className="font-semibold text-slate-900 mb-3">
           Data Analysis
@@ -432,11 +432,8 @@ export default function App() {
 
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      {/* Programming Languages */}
       <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">
-          🛠️ Programming Languages
-        </h4>
+        <h4 className="font-medium text-slate-900 mb-4">Programming Languages</h4>
         <div className="flex flex-wrap gap-3">
           {["Java", "Python", "C", "C++", "JavaScript", "SQL"].map(skill => (
             <span key={skill} className="skill-chip">{skill}</span>
@@ -444,11 +441,8 @@ export default function App() {
         </div>
       </div>
 
-      {/* Web & Frameworks */}
       <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">
-          🌐 Web & Frameworks
-        </h4>
+        <h4 className="font-medium text-slate-900 mb-4">Web & Frameworks</h4>
         <div className="flex flex-wrap gap-3">
           {[
             "HTML5", "CSS3", "React.js",
@@ -460,11 +454,8 @@ export default function App() {
         </div>
       </div>
 
-      {/* Databases */}
       <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">
-          🗄️ Databases
-        </h4>
+        <h4 className="font-medium text-slate-900 mb-4">Databases</h4>
         <div className="flex flex-wrap gap-3">
           {["MySQL"].map(skill => (
             <span key={skill} className="skill-chip">{skill}</span>
@@ -472,11 +463,8 @@ export default function App() {
         </div>
       </div>
 
-      {/* Testing */}
       <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">
-          🧪 Testing
-        </h4>
+        <h4 className="font-medium text-slate-900 mb-4">Testing</h4>
         <div className="flex flex-wrap gap-3">
           {[
             "Manual Testing",
@@ -489,11 +477,8 @@ export default function App() {
         </div>
       </div>
 
-      {/* Tools & Platforms */}
       <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">
-          🧰 Tools & Platforms
-        </h4>
+        <h4 className="font-medium text-slate-900 mb-4">Tools & Platforms</h4>
         <div className="flex flex-wrap gap-3">
           {[
             "Git", "GitHub",
@@ -505,11 +490,8 @@ export default function App() {
         </div>
       </div>
 
-      {/* Cloud & DevOps */}
       <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">
-          ☁️ Cloud & DevOps
-        </h4>
+        <h4 className="font-medium text-slate-900 mb-4">Cloud & DevOps</h4>
         <div className="flex flex-wrap gap-3">
           {["AWS", "Docker", "CI/CD Concepts"].map(skill => (
             <span key={skill} className="skill-chip">{skill}</span>
@@ -537,31 +519,38 @@ export default function App() {
 
     <h3 className="text-2xl font-semibold text-slate-900 mb-14">
       Internship Experience
+    </h3>
 
-    </h3> 
     <p className="text-slate-600 mb-10 max-w-2xl">
-  As a fresher, I have gained practical industry exposure through internships,
-  where I worked on real-world development and testing tasks.
-</p>
-
+      Through internships, I gained practical industry exposure by contributing
+      to real-world software development and testing deliverables.
+    </p>
 
     <div className="space-y-10 border-l-2 border-indigo-200 pl-6">
 
-      {/* TECHCITI */}
       <div className="relative">
         <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600"></span>
 
         <div className="bg-slate-50 rounded-2xl p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">
-            Software Development Intern
+          <h4 className="font-semibold text-slate-900 text-lg">Software Engineer Intern</h4>
+          <p className="text-sm text-slate-500">OctaNet Services Pvt Ltd. | Remote (Bengaluru, Karnataka, India)</p>
+          <p className="text-sm text-slate-400 mb-4">Dec 2024 - Feb 2025</p>
 
-          </h4>
-          <p className="text-sm text-slate-500">
-            TechCiti Software Consulting · Bengaluru
-          </p>
-          <p className="text-sm text-slate-400 mb-4">
-            Nov 2024 – Jan 2025
-          </p>
+          <ul className="list-disc list-inside text-slate-600 text-sm space-y-2">
+            <li>Built and improved web application features in an internship environment</li>
+            <li>Collaborated on bug fixes, testing, and deployment-ready code updates</li>
+            <li>Worked with core software engineering practices including version control and code review</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="relative">
+        <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600"></span>
+
+        <div className="bg-slate-50 rounded-2xl p-6">
+          <h4 className="font-semibold text-slate-900 text-lg">Software Development Intern</h4>
+          <p className="text-sm text-slate-500">TechCiti Software Consulting | Bengaluru</p>
+          <p className="text-sm text-slate-400 mb-4">Nov 2024 - Jan 2025</p>
 
           <ul className="list-disc list-inside text-slate-600 text-sm space-y-2">
             <li>Worked on secure data de-duplication and recovery systems</li>
@@ -571,20 +560,13 @@ export default function App() {
         </div>
       </div>
 
-      {/* QSPIDERS */}
       <div className="relative">
         <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600"></span>
 
         <div className="bg-slate-50 rounded-2xl p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">
-            Software Testing Intern
-          </h4>
-          <p className="text-sm text-slate-500">
-            QSpiders CampusConnect · Bengaluru
-          </p>
-          <p className="text-sm text-slate-400 mb-4">
-            Mar 2023 – May 2023
-          </p>
+          <h4 className="font-semibold text-slate-900 text-lg">Software Testing Intern</h4>
+          <p className="text-sm text-slate-500">QSpiders CampusConnect | Bengaluru</p>
+          <p className="text-sm text-slate-400 mb-4">Mar 2023 - May 2023</p>
 
           <ul className="list-disc list-inside text-slate-600 text-sm space-y-2">
             <li>Designed and executed manual test cases</li>
@@ -622,12 +604,50 @@ export default function App() {
 
     <div className="grid md:grid-cols-2 gap-10">
 
-      {/* Project 1 */}
+      <div className="md:col-span-2 bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden border border-indigo-100">
+        <div className="p-6">
+          <p className="text-xs uppercase tracking-wide text-indigo-600 font-semibold">Featured Project</p>
+          <h4 className="font-semibold text-slate-900 text-xl mt-2">TripBuddy</h4>
+
+          <p className="text-sm text-slate-600 mt-3 leading-relaxed">
+            Full-stack travel planning application to manage trip details, budgets, and itinerary workflows with a clean and responsive user experience.
+          </p>
+
+          <div className="flex flex-wrap gap-2 mt-4">
+            {["React", "Node.js", "Express.js", "MongoDB", "JavaScript"].map(t => (
+              <span
+                key={t}
+                className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 mt-6">
+            <a
+              href="https://github.com/Venkateshagali/Tripbuddy"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
+            >
+              GitHub Repo
+            </a>
+            <a
+              href="https://tripbuddy-kappa.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 transition"
+            >
+              Live Demo
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
         <div className="p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">
-            Online Scam Guide
-          </h4>
+          <h4 className="font-semibold text-slate-900 text-lg">Online Scam Guide</h4>
 
           <p className="text-sm text-slate-600 mt-3 leading-relaxed">
             Awareness-based web application designed to educate users
@@ -636,31 +656,24 @@ export default function App() {
 
           <div className="flex flex-wrap gap-2 mt-4">
             {["HTML", "CSS", "JavaScript", "PHP", "MySQL"].map(t => (
-              <span
-                key={t}
-                className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600"
-              >
-                {t}
-              </span>
+              <span key={t} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">{t}</span>
             ))}
           </div>
 
           <a
             href="https://github.com/Venkateshagali/online-scam-guide"
             target="_blank"
+            rel="noreferrer"
             className="inline-block mt-6 text-sm font-medium text-indigo-600 hover:underline"
           >
-            View on GitHub →
+            View on GitHub
           </a>
         </div>
       </div>
 
-      {/* Project 2 */}
       <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
         <div className="p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">
-            QPause – Quantum-Immune Access Control
-          </h4>
+          <h4 className="font-semibold text-slate-900 text-lg">QPause - Quantum-Immune Access Control</h4>
 
           <p className="text-sm text-slate-600 mt-3 leading-relaxed">
             Secure cloud storage system implementing encryption-based
@@ -669,31 +682,24 @@ export default function App() {
 
           <div className="flex flex-wrap gap-2 mt-4">
             {["Java", "JSP", "Servlets", "MySQL"].map(t => (
-              <span
-                key={t}
-                className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600"
-              >
-                {t}
-              </span>
+              <span key={t} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">{t}</span>
             ))}
           </div>
 
           <a
             href="https://github.com/Venkateshagali/QPause"
             target="_blank"
+            rel="noreferrer"
             className="inline-block mt-6 text-sm font-medium text-indigo-600 hover:underline"
           >
-            View on GitHub →
+            View on GitHub
           </a>
         </div>
       </div>
 
-      {/* Project 3 */}
       <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
         <div className="p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">
-            Secure Data De-Duplication & Recovery
-          </h4>
+          <h4 className="font-semibold text-slate-900 text-lg">Secure Data De-Duplication & Recovery</h4>
 
           <p className="text-sm text-slate-600 mt-3 leading-relaxed">
             Encryption-based system for efficient and secure cloud data
@@ -702,31 +708,24 @@ export default function App() {
 
           <div className="flex flex-wrap gap-2 mt-4">
             {["Java", "SQL", "HTML", "CSS", "JavaScript"].map(t => (
-              <span
-                key={t}
-                className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600"
-              >
-                {t}
-              </span>
+              <span key={t} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">{t}</span>
             ))}
           </div>
 
           <a
             href="https://github.com/Venkateshagali/Data-secure-duplication-and-recovery-based-on-public-key-encryption-with-keyword-search"
             target="_blank"
+            rel="noreferrer"
             className="inline-block mt-6 text-sm font-medium text-indigo-600 hover:underline"
           >
-            View on GitHub →
+            View on GitHub
           </a>
         </div>
       </div>
 
-      {/* Project 4 */}
       <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
         <div className="p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">
-            Movie Recommendation App
-          </h4>
+          <h4 className="font-semibold text-slate-900 text-lg">Movie Recommendation App</h4>
 
           <p className="text-sm text-slate-600 mt-3 leading-relaxed">
             Frontend-based application that recommends movies based on
@@ -735,21 +734,17 @@ export default function App() {
 
           <div className="flex flex-wrap gap-2 mt-4">
             {["HTML", "CSS", "JavaScript"].map(t => (
-              <span
-                key={t}
-                className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600"
-              >
-                {t}
-              </span>
+              <span key={t} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">{t}</span>
             ))}
           </div>
 
           <a
             href="https://github.com/Venkateshagali/movie-recommendation-app"
             target="_blank"
+            rel="noreferrer"
             className="inline-block mt-6 text-sm font-medium text-indigo-600 hover:underline"
           >
-            View on GitHub →
+            View on GitHub
           </a>
         </div>
       </div>
@@ -758,7 +753,6 @@ export default function App() {
   </div>
 </motion.section>
 
-      
       {/* PUBLICATION */}
 <motion.section
   data-scroll-focus
@@ -795,7 +789,7 @@ export default function App() {
 
       <p className="text-slate-500 text-sm mt-3">
         Published in <span className="font-medium">
-          IJMRSET – International Journal of Multidisciplinary Research in
+          IJMRSET - International Journal of Multidisciplinary Research in
           Science, Engineering & Technology
         </span>
       </p>
@@ -882,7 +876,7 @@ export default function App() {
 
     <p className="text-slate-600 mb-14 max-w-2xl">
       Interested in working together or have a question?
-      Feel free to reach out — I’ll get back to you.
+      Feel free to reach out - I'll get back to you.
     </p>
 
     <div className="grid md:grid-cols-2 gap-14 items-start">
@@ -1012,9 +1006,8 @@ function Project({ title, desc, tech, link }) {
         target="_blank"
         className="inline-block mt-4 text-sm text-indigo-600 hover:underline"
       >
-        View on GitHub →
+        View on GitHub
       </a>
     </motion.div>
   )
 }
-
