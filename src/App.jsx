@@ -730,6 +730,7 @@ export default function App() {
           <p className="text-sm text-slate-600 mt-3 leading-relaxed">
             AI-style movie recommendation assistant with chat-like interactions,
             delivering 5 curated movie suggestions based on user preferences.
+            Developed by me as a full-stack AI project.
           </p>
 
           <div className="flex flex-wrap gap-2 mt-4">
