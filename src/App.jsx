@@ -728,24 +728,42 @@ export default function App() {
           <h4 className="font-semibold text-slate-900 text-lg">Movie Recommendation App</h4>
 
           <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-            Frontend-based application that recommends movies based on
-            user preferences with a clean and responsive UI.
+            AI-style movie recommendation assistant with chat-like interactions,
+            delivering 5 curated movie suggestions based on user preferences.
           </p>
 
           <div className="flex flex-wrap gap-2 mt-4">
-            {["HTML", "CSS", "JavaScript"].map(t => (
+            {["React", "Fastify", "OpenAI API", "Node.js", "Vercel"].map(t => (
               <span key={t} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">{t}</span>
             ))}
           </div>
 
-          <a
-            href="https://github.com/Venkateshagali/movie-recommendation-app"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block mt-6 text-sm font-medium text-indigo-600 hover:underline"
-          >
-            View on GitHub
-          </a>
+          <div className="flex flex-wrap items-center gap-3 mt-6">
+            <a
+              href="https://github.com/Venkateshagali/movie-recommendation-app"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
+            >
+              GitHub Repo
+            </a>
+            <a
+              href="https://movie-recommendation-frontend-two.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 transition"
+            >
+              Live App
+            </a>
+            <a
+              href="https://movie-recommendation-backend-beryl.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
+            >
+              Backend API
+            </a>
+          </div>
         </div>
       </div>
 
