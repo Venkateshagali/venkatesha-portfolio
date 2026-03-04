@@ -1,5 +1,6 @@
+import emailjs from "@emailjs/browser"
 import { motion } from "framer-motion"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import certificates from "./data/certificates"
 
 const reveal = {
@@ -103,6 +104,8 @@ const experiences = [
 ]
 
 export default function App() {
+  const [contactStatus, setContactStatus] = useState("")
+
   useEffect(() => {
     const bar = document.getElementById("scroll-progress")
     if (!bar) return
@@ -117,6 +120,19 @@ export default function App() {
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault()
+    setContactStatus("Sending message...")
+
+    try {
+      await emailjs.sendForm("venkateshagali", "venkateshagali2000", e.target, "k9M2VTHHzdMsN2Yjs")
+      setContactStatus("Message sent successfully. I will get back to you soon.")
+      e.target.reset()
+    } catch {
+      setContactStatus("Failed to send. Please email me directly at venkateshagali2000@gmail.com.")
+    }
+  }
 
   return (
     <div className="bg-slate-50 text-slate-800 font-sans">
@@ -135,6 +151,12 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-3 text-sm">
+            <a
+              href="#contact"
+              className="px-3 py-2 rounded-lg border border-indigo-200 text-indigo-700 hover:bg-indigo-50 transition"
+            >
+              Hire Me
+            </a>
             <a
               href="/Venkatesha_S_Resume_2026.pdf"
               download
@@ -166,6 +188,9 @@ export default function App() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#contact" className="px-6 py-3 rounded-lg border border-indigo-200 text-indigo-700 font-medium hover:bg-indigo-50 transition">
+                Hire Me
+              </a>
               <a href="#projects" className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition">
                 View Projects
               </a>
@@ -427,26 +452,69 @@ export default function App() {
         <p className="text-slate-600 mb-10 max-w-2xl">Open to Software Developer, Backend Developer, Cloud Engineer, and Java Developer opportunities.</p>
 
         <div className="grid md:grid-cols-2 gap-8">
+          <form onSubmit={handleContactSubmit} className="bg-white border border-slate-200 rounded-2xl p-7 space-y-5">
+            <div>
+              <label className="block text-sm mb-1 text-slate-600">Name</label>
+              <input
+                type="text"
+                name="from_name"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm mb-1 text-slate-600">Email</label>
+              <input
+                type="email"
+                name="from_email"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm mb-1 text-slate-600">Message</label>
+              <textarea
+                name="message"
+                rows="4"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              ></textarea>
+            </div>
+            <button type="submit" className="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition">
+              Send Message
+            </button>
+            {contactStatus && <p className="text-sm text-slate-600">{contactStatus}</p>}
+          </form>
+
           <div className="bg-white border border-slate-200 rounded-2xl p-7">
-            <p className="text-sm text-slate-400">Email</p>
-            <a href="mailto:venkateshagali2000@gmail.com" className="text-slate-900 font-medium hover:text-indigo-600">
-              venkateshagali2000@gmail.com
-            </a>
+            <p className="text-xs uppercase tracking-wide text-indigo-600 font-semibold mb-2">Available for Hiring</p>
+            <h4 className="text-lg font-semibold text-slate-900">Hire Me for Backend and Cloud Projects</h4>
+            <p className="text-sm text-slate-600 mt-3 leading-relaxed">
+              I am open to full-time and internship opportunities in software development, backend engineering, cloud, and Java roles.
+            </p>
 
-            <p className="text-sm text-slate-400 mt-6">LinkedIn</p>
-            <a href="https://www.linkedin.com/in/venkatesha-agali2000/" target="_blank" rel="noreferrer" className="text-indigo-600 font-medium hover:underline">
-              linkedin.com/in/venkatesha-agali2000
-            </a>
+            <div className="mt-6 border-t border-slate-200 pt-5">
+              <p className="text-sm text-slate-400">Email</p>
+              <a href="mailto:venkateshagali2000@gmail.com" className="text-slate-900 font-medium hover:text-indigo-600">
+                venkateshagali2000@gmail.com
+              </a>
+            </div>
 
-            <p className="text-sm text-slate-400 mt-6">GitHub</p>
-            <a href="https://github.com/Venkateshagali" target="_blank" rel="noreferrer" className="text-indigo-600 font-medium hover:underline">
-              github.com/Venkateshagali
-            </a>
-          </div>
+            <div className="mt-6">
+              <p className="text-sm text-slate-400">LinkedIn</p>
+              <a href="https://www.linkedin.com/in/venkatesha-agali2000/" target="_blank" rel="noreferrer" className="text-indigo-600 font-medium hover:underline">
+                linkedin.com/in/venkatesha-agali2000
+              </a>
+            </div>
 
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-7">
-            <p className="font-semibold text-slate-900">Quick Actions</p>
-            <div className="mt-4 flex flex-wrap gap-3">
+            <div className="mt-6">
+              <p className="text-sm text-slate-400">GitHub</p>
+              <a href="https://github.com/Venkateshagali" target="_blank" rel="noreferrer" className="text-indigo-600 font-medium hover:underline">
+                github.com/Venkateshagali
+              </a>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
               <a href="/Venkatesha_S_Resume_2026.pdf" download className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition">
                 Download Resume
               </a>
@@ -454,8 +522,10 @@ export default function App() {
                 View Projects
               </a>
             </div>
+
             <p className="text-sm text-slate-500 mt-5">Location: Bengaluru, India | Last updated: March 2026</p>
           </div>
+
         </div>
       </motion.section>
     </div>
