@@ -19,7 +19,7 @@ const navItems = [
 
 const skills = {
   Backend: ["Java", "Spring Boot", "Node.js", "Express.js", "REST APIs", "JSP/Servlets"],
-  "Cloud & DevOps": ["AWS EC2", "AWS S3", "Docker", "CI/CD Concepts", "Vercel"],
+  "Cloud & DevOps": ["AWS EC2", "AWS S3", "Azure", "Docker", "CI/CD Concepts", "Vercel"],
   Database: ["SQL", "MySQL", "Query Optimization", "Data Modeling"],
   Testing: ["Selenium", "Manual Testing", "Test Case Design", "STLC/SDLC"],
   Frontend: ["React", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
@@ -36,24 +36,22 @@ const featuredProjects = [
     live: "https://tripbuddy-kappa.vercel.app/",
   },
   {
-    title: "Movie Recommendation App",
-    problem: "Users struggle to find relevant movies quickly from large catalogs.",
+    title: "QPause - Quantum-Immune Access Control",
+    problem: "Cloud data systems need stronger privacy controls and resilient access models.",
     solution:
-      "Developed a recommendation workflow with chat-style input, backend orchestration, and prompt-based filtering. Split frontend and backend deployments for independent scaling and easier maintenance.",
-    tech: ["React", "Node.js", "Fastify", "OpenAI API", "Vercel"],
-    repo: "https://github.com/Venkateshagali/movie-recommendation-app",
-    live: "https://movie-recommendation-frontend-two.vercel.app/",
-    extra: "https://movie-recommendation-backend-beryl.vercel.app/",
+      "Implemented a privacy-focused cloud access prototype using encryption-oriented access control and secure searchable retrieval workflows.",
+    tech: ["Java", "JSP", "Servlets", "MySQL"],
+    repo: "https://github.com/Venkateshagali/QPause",
   },
 ]
 
 const moreProjects = [
   {
-    title: "QPause - Quantum-Immune Access Control",
+    title: "Movie Recommendation App",
     description:
-      "Implemented a privacy-focused cloud access prototype using encryption-oriented access control and secure searchable retrieval workflows.",
-    tech: ["Java", "JSP", "Servlets", "MySQL"],
-    repo: "https://github.com/Venkateshagali/QPause",
+      "Built a chat-style movie recommendation workflow with frontend and backend separation. Kept as an ongoing project and currently improving production stability.",
+    tech: ["React", "Node.js", "Fastify", "OpenAI API", "Vercel"],
+    repo: "https://github.com/Venkateshagali/movie-recommendation-app",
   },
   {
     title: "Secure Data De-Duplication & Recovery",
@@ -159,8 +157,9 @@ export default function App() {
       <section className="relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 pt-28 pb-24 grid md:grid-cols-2 gap-14 items-center">
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-indigo-600 font-medium mb-3">Backend-Focused Software Developer</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">Java, Spring Boot, Node.js, AWS</h2>
+            <p className="text-indigo-600 font-medium mb-3">Hello, I'm</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">Venkatesha S</h2>
+            <p className="mt-4 text-xl text-slate-600">Software Developer | Cloud and Software Development</p>
             <p className="mt-5 text-slate-600 max-w-xl leading-relaxed">
               MCA graduate building secure, scalable backend systems and full-stack applications. Focused on API development,
               cloud deployment, and production-ready engineering practices.
@@ -301,9 +300,11 @@ export default function App() {
                   <a href={project.repo} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-100 transition">
                     GitHub Repo
                   </a>
-                  <a href={project.live} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 transition">
-                    Live Demo
-                  </a>
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 transition">
+                      Live Demo
+                    </a>
+                  )}
                   {project.extra && (
                     <a href={project.extra} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-100 transition">
                       Backend API
