@@ -1,13 +1,108 @@
-import emailjs from "@emailjs/browser"
 import { motion } from "framer-motion"
 import { useEffect } from "react"
 import certificates from "./data/certificates"
 
-
-const revealCenter = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1 }
+const reveal = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
 }
+
+const navItems = [
+  ["about", "About"],
+  ["skills", "Skills"],
+  ["projects", "Projects"],
+  ["experience", "Experience"],
+  ["github", "GitHub"],
+  ["certificates", "Certificates"],
+  ["contact", "Contact"],
+]
+
+const skills = {
+  Backend: ["Java", "Spring Boot", "Node.js", "Express.js", "REST APIs", "JSP/Servlets"],
+  "Cloud & DevOps": ["AWS EC2", "AWS S3", "Docker", "CI/CD Concepts", "Vercel"],
+  Database: ["SQL", "MySQL", "Query Optimization", "Data Modeling"],
+  Testing: ["Selenium", "Manual Testing", "Test Case Design", "STLC/SDLC"],
+  Frontend: ["React", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
+}
+
+const featuredProjects = [
+  {
+    title: "TripBuddy",
+    problem: "Trip planning across budget, itinerary, and activity notes is usually scattered across apps.",
+    solution:
+      "Built a full-stack travel planner with centralized trip data, budget tracking, and itinerary workflows. Structured backend APIs and responsive UI modules to simplify planning and updates.",
+    tech: ["React", "Node.js", "Express.js", "MongoDB", "JavaScript"],
+    repo: "https://github.com/Venkateshagali/Tripbuddy",
+    live: "https://tripbuddy-kappa.vercel.app/",
+  },
+  {
+    title: "Movie Recommendation App",
+    problem: "Users struggle to find relevant movies quickly from large catalogs.",
+    solution:
+      "Developed a recommendation workflow with chat-style input, backend orchestration, and prompt-based filtering. Split frontend and backend deployments for independent scaling and easier maintenance.",
+    tech: ["React", "Node.js", "Fastify", "OpenAI API", "Vercel"],
+    repo: "https://github.com/Venkateshagali/movie-recommendation-app",
+    live: "https://movie-recommendation-frontend-two.vercel.app/",
+    extra: "https://movie-recommendation-backend-beryl.vercel.app/",
+  },
+]
+
+const moreProjects = [
+  {
+    title: "QPause - Quantum-Immune Access Control",
+    description:
+      "Implemented a privacy-focused cloud access prototype using encryption-oriented access control and secure searchable retrieval workflows.",
+    tech: ["Java", "JSP", "Servlets", "MySQL"],
+    repo: "https://github.com/Venkateshagali/QPause",
+  },
+  {
+    title: "Secure Data De-Duplication & Recovery",
+    description:
+      "Built a secure storage flow reducing duplicate cloud data while supporting controlled recovery using encryption-backed validation.",
+    tech: ["Java", "SQL", "JavaScript", "HTML", "CSS"],
+    repo: "https://github.com/Venkateshagali/Data-secure-duplication-and-recovery-based-on-public-key-encryption-with-keyword-search",
+  },
+  {
+    title: "Online Scam Guide",
+    description:
+      "Created an awareness platform describing scam patterns and cyber-safety actions with categorized educational content.",
+    tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    repo: "https://github.com/Venkateshagali/online-scam-guide",
+  },
+]
+
+const experiences = [
+  {
+    role: "Software Engineer Intern",
+    org: "OctaNet Services Pvt Ltd",
+    meta: "Remote | Dec 2024 - Feb 2025",
+    points: [
+      "Implemented and refined web application modules aligned to sprint goals and production-readiness expectations.",
+      "Resolved defects, validated fixes, and improved release quality through structured testing cycles.",
+      "Contributed through Git-based collaboration, code reviews, and documented handoffs.",
+    ],
+  },
+  {
+    role: "Software Development Intern",
+    org: "TechCiti Software Consulting",
+    meta: "Bengaluru | Nov 2024 - Jan 2025",
+    points: [
+      "Developed backend components for secure data de-duplication and recovery flows using Java and SQL.",
+      "Worked on encryption-based access workflows to improve data protection in storage and retrieval.",
+      "Supported integration tasks and bug fixes for stable intern project delivery.",
+    ],
+  },
+  {
+    role: "Software Testing Intern",
+    org: "QSpiders CampusConnect",
+    meta: "Bengaluru | Mar 2023 - May 2023",
+    points: [
+      "Designed and executed manual test cases for functional and regression scenarios.",
+      "Used SQL validation queries to verify data correctness across workflows.",
+      "Performed baseline Selenium WebDriver automation for repeated test paths.",
+    ],
+  },
+]
 
 export default function App() {
   useEffect(() => {
@@ -25,1007 +120,343 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  useEffect(() => {
-    const sections = Array.from(document.querySelectorAll("[data-scroll-focus]"))
-    if (!sections.length) return
-
-    sections.forEach((section) => section.classList.add("section-out-of-focus"))
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove("section-out-of-focus")
-          } else {
-            entry.target.classList.add("section-out-of-focus")
-          }
-        })
-      },
-      {
-        threshold: 0.35,
-        rootMargin: "-5% 0px -15% 0px",
-      }
-    )
-
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <div className="bg-slate-50 text-slate-800 font-sans">
       <div id="scroll-progress" className="scroll-progress"></div>
 
-      {/* NAVBAR */}
-<nav className="fixed top-0 w-full bg-white/80 backdrop-blur border-b border-slate-200 z-50">
-  <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur border-b border-slate-200 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-6">
+          <h1 className="text-lg font-semibold text-slate-900 tracking-tight">Venkatesha S</h1>
 
-    {/* LOGO / NAME */}
-    <h1 className="text-lg font-semibold text-slate-900 tracking-tight">
-      Venkatesha S<span className="text-indigo-600"></span>
-    </h1>
+          <div className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-700">
+            {navItems.map(([id, label]) => (
+              <a key={id} href={`#${id}`} className="hover:text-indigo-600 transition">
+                {label}
+              </a>
+            ))}
+          </div>
 
-    {/* LINKS */}
-    <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-      <a
-        href="#about"
-        className="hover:text-indigo-600 transition"
-      >
-        About
-      </a>
-      <a
-        href="#skills"
-        className="hover:text-indigo-600 transition"
-      >
-        Skills
-      </a>
-      <a
-        href="#experience"
-        className="hover:text-indigo-600 transition"
-      >
-        Experience
-      </a>
-      <a
-        href="#projects"
-        className="hover:text-indigo-600 transition"
-      >
-        Projects
-      </a>
-      <a
-        href="#certificates"
-        className="hover:text-indigo-600 transition"
-      >
-        Certificates
-      </a>
-      <a
-        href="#contact"
-        className="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition"
-      >
-        Contact
-      </a>
-    </div>
-
-  </div>
-</nav>
-
-
-     {/* HERO SECTION */}
-<section data-scroll-focus className="relative overflow-hidden section-focus-transition">
-  <div className="max-w-6xl mx-auto px-6 pt-28 pb-32 grid md:grid-cols-2 gap-16 items-center">
-
-    {/* LEFT CONTENT */}
-    <motion.section
-  variants={revealCenter}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  transition={{ duration: 0.7, ease: "easeOut" }}
->
-
-
-      <p className="text-indigo-600 font-medium mb-3">Hello, I'm</p>
-
-      <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-        Venkatesha S
-      </h1>
-
-      <p className="mt-4 text-xl text-slate-600">
-        Software Developer | Cloud & Data Enthusiast
-      </p>
-
-      <p className="mt-6 text-slate-600 max-w-xl leading-relaxed">
-        MCA graduate with hands-on experience in full-stack development,
-        backend systems, and cloud fundamentals. Focused on building
-        secure, scalable, and production-ready applications.
-      </p>
-
-      {/* CTA BUTTONS */}
-      <div className="mt-8 flex gap-4">
-        <a
-          href="#projects"
-          className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition"
-        >
-          View Projects
-        </a>
-
-        <a
-          href="/Resume_VENKATESHA_S.pdf"
-          download
-          className="px-6 py-3 rounded-lg border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition"
-        >
-          Download CV
-        </a>
-      </div>
-
-      {/* STATS */}
-      <div className="mt-10 flex gap-10 text-sm text-slate-600">
-        <div>
-          <p className="text-xl font-semibold text-slate-900">7+</p>
-          <p>Projects</p>
+          <div className="flex items-center gap-3 text-sm">
+            <a
+              href="/Venkatesha_S_Resume_2026.pdf"
+              download
+              className="px-3 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 transition"
+            >
+              Resume
+            </a>
+            <a
+              href="https://github.com/Venkateshagali"
+              target="_blank"
+              rel="noreferrer"
+              className="px-3 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition"
+            >
+              GitHub
+            </a>
+          </div>
         </div>
-        <div>
-          <p className="text-xl font-semibold text-slate-900">3</p>
-          <p>Internships</p>
-        </div>
-        <div>
-          <p className="text-xl font-semibold text-slate-900">1</p>
-          <p>Research Paper</p>
-        </div>
-      </div>
-    </motion.section>
-    {/* SCROLL INDICATOR */}
-<motion.div
-  className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-slate-400"
-  animate={{ y: [0, 10, 0] }}
-  transition={{ repeat: Infinity, duration: 1.5 }}
->
-  <span className="text-xs mb-2">Scroll</span>
-  <div className="w-5 h-9 border-2 border-slate-400 rounded-full flex justify-center">
-    <div className="w-1 h-2 bg-slate-400 rounded-full mt-1"></div>
-  </div>
-</motion.div>
-
-
-
-   {/* RIGHT IMAGE */}
-<motion.div
-  className="relative flex items-center justify-center z-10"
-  initial={{ opacity: 0, scale: 0.9 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.8, delay: 0.2 }}
->
-
-
-  {/* background soft circle */}
-  <div className="absolute w-72 h-72 rounded-full bg-indigo-100"></div>
-
-  {/* profile image */}
-  <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl bg-white flex items-center justify-center">
-    <img
-      src="/profile.jpg"
-      alt="Venkatesha S"
-      className="w-full h-full object-cover object-[center_10%]"
-    />
-  </div>
-
-</motion.div>
-
-
-  </div>
-
-  {/* BACKGROUND SHAPES (NO BLUR, NO CLICK BLOCK) */}
-  <div className="pointer-events-none absolute top-24 right-24 w-72 h-72 bg-indigo-100 rounded-full opacity-40"></div>
-  <div className="pointer-events-none absolute bottom-24 left-24 w-64 h-64 bg-purple-100 rounded-full opacity-30"></div>
-</section>
-
-
-
-      {/* ABOUT + EDUCATION */}
-<motion.section
-  data-scroll-focus
-  id="about"
-  className="bg-white reveal reveal-center section-focus-transition"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-
-  <div className="max-w-6xl mx-auto px-6 py-28 grid md:grid-cols-2 gap-16">
-
-    {/* ABOUT */}
-    <div>
-      <h3 className="text-2xl font-semibold text-slate-900 mb-6">
-        About Me
-      </h3>
-
-      <p className="text-slate-600 leading-relaxed mb-4">
-        I am an MCA graduate (2025) with a strong foundation in software
-        development, backend systems, and cloud computing fundamentals.
-        I am deeply interested in software development and enjoy building
-        structured, scalable, and secure applications.
-      </p>
-
-      <p className="text-slate-600 leading-relaxed mb-4">
-        Alongside software development, I also have knowledge of data analysis,
-        including working with SQL, handling structured datasets, and
-        extracting meaningful insights. This allows me to approach problems
-        with both a development and analytical perspective.
-      </p>
-
-      <p className="text-slate-600 leading-relaxed">
-        I have gained hands-on industry experience through internships in
-        Java backend development, secure data systems, and software testing.
-        I continuously improve my skills through projects, certifications,
-        and practical learning.
-      </p>
-
-      {/* QUICK INFO */}
-      <div className="mt-10 grid grid-cols-2 gap-6 text-sm">
-        <div>
-          <span className="block text-slate-400">Name</span>
-          <span className="font-medium text-slate-900">Venkatesha S</span>
-        </div>
-        <div>
-          <span className="block text-slate-400">Location</span>
-          <span className="font-medium text-slate-900">Bengaluru, India</span>
-        </div>
-        <div>
-          <span className="block text-slate-400">Interests</span>
-          <span className="font-medium text-slate-900">
-            Software Development, Cloud Computing
-          </span>
-        </div>
-        <div>
-          <span className="block text-slate-400">Additional Skills</span>
-          <span className="font-medium text-slate-900">
-            Data Analysis
-          </span>
-        </div>
-      </div>
-    </div>
-
-    {/* EDUCATION */}
-    <div>
-      <h3 className="text-2xl font-semibold text-slate-900 mb-6">
-        Education
-      </h3>
-
-      <div className="space-y-8 border-l-2 border-indigo-200 pl-6">
-
-        {/* MCA */}
-        <div>
-          <span className="text-sm text-indigo-600 font-medium">
-            2023 - 2025
-          </span>
-          <h4 className="mt-1 font-semibold text-slate-900">
-            Master of Computer Applications (MCA)
-          </h4>
-          <p className="text-slate-600 text-sm">
-            AMC Engineering College, Bengaluru
-          </p>
-          <p className="text-slate-500 text-sm">
-            CGPA: 8.4 / 10
-          </p>
-        </div>
-
-        {/* BCA */}
-        <div>
-          <span className="text-sm text-indigo-600 font-medium">
-            2020 - 2023
-          </span>
-          <h4 className="mt-1 font-semibold text-slate-900">
-            Bachelor of Computer Applications (BCA)
-          </h4>
-          <p className="text-slate-600 text-sm">
-            Vidyavahini First Grade College
-          </p>
-          <p className="text-slate-500 text-sm">
-            CGPA: 7.67 / 10
-          </p>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</motion.section>
-
-      {/* WHAT I DO */}
-<motion.section
-  data-scroll-focus
-  id="skills"
-  className="section-focus-transition"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-
-  <div className="max-w-6xl mx-auto px-6 py-28">
-
-    <h3 className="text-2xl font-semibold text-slate-900 mb-14">
-      What I Do
-    </h3>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-      {/* Software Development */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-        <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
-          SD
-        </div>
-        <h4 className="font-semibold text-slate-900 mb-3">
-          Software Development
-        </h4>
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Building structured, scalable applications using Java,
-          modern frameworks, and clean coding practices.
-        </p>
-      </div>
-
-      {/* Full Stack */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-        <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
-          FS
-        </div>
-        <h4 className="font-semibold text-slate-900 mb-3">
-          Full-Stack Development
-        </h4>
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Developing responsive user interfaces and integrating
-          frontend applications with backend APIs.
-        </p>
-      </div>
-
-      {/* Cloud & Backend */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-        <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
-          CB
-        </div>
-        <h4 className="font-semibold text-slate-900 mb-3">
-          Cloud & Backend
-        </h4>
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Understanding cloud fundamentals, backend systems,
-          databases, and secure server-side logic.
-        </p>
-      </div>
-
-      {/* Data Analysis */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-        <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 text-xl">
-          DA
-        </div>
-        <h4 className="font-semibold text-slate-900 mb-3">
-          Data Analysis
-        </h4>
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Working with structured data using SQL, analyzing datasets,
-          and extracting meaningful insights.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</motion.section>
-{/* TECHNICAL SKILLS */}
-<motion.section
-  data-scroll-focus
-  id="technical-skills"
-  className="section-focus-transition"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-
-  <div className="max-w-6xl mx-auto px-6 py-24">
-
-    <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-      Technical Skills
-    </h3>
-
-    <p className="text-slate-600 mb-12 max-w-2xl">
-      A detailed overview of the technologies and tools I work with
-      across development, testing, cloud, and data-related tasks.
-    </p>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">Programming Languages</h4>
-        <div className="flex flex-wrap gap-3">
-          {["Java", "Python", "C", "C++", "JavaScript", "SQL"].map(skill => (
-            <span key={skill} className="skill-chip">{skill}</span>
-          ))}
-        </div>
-      </div>
-
-      <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">Web & Frameworks</h4>
-        <div className="flex flex-wrap gap-3">
-          {[
-            "HTML5", "CSS3", "React.js",
-            "Node.js", "Express.js",
-            "Spring Boot", "Bootstrap", "jQuery"
-          ].map(skill => (
-            <span key={skill} className="skill-chip">{skill}</span>
-          ))}
-        </div>
-      </div>
-
-      <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">Databases</h4>
-        <div className="flex flex-wrap gap-3">
-          {["MySQL"].map(skill => (
-            <span key={skill} className="skill-chip">{skill}</span>
-          ))}
-        </div>
-      </div>
-
-      <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">Testing</h4>
-        <div className="flex flex-wrap gap-3">
-          {[
-            "Manual Testing",
-            "Test Case Design",
-            "SDLC / STLC",
-            "Selenium WebDriver (Basics)"
-          ].map(skill => (
-            <span key={skill} className="skill-chip">{skill}</span>
-          ))}
-        </div>
-      </div>
-
-      <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">Tools & Platforms</h4>
-        <div className="flex flex-wrap gap-3">
-          {[
-            "Git", "GitHub",
-            "VS Code", "Eclipse",
-            "Postman", "Android Studio"
-          ].map(skill => (
-            <span key={skill} className="skill-chip">{skill}</span>
-          ))}
-        </div>
-      </div>
-
-      <div className="border border-slate-200 rounded-xl p-6">
-        <h4 className="font-medium text-slate-900 mb-4">Cloud & DevOps</h4>
-        <div className="flex flex-wrap gap-3">
-          {["AWS", "Docker", "CI/CD Concepts"].map(skill => (
-            <span key={skill} className="skill-chip">{skill}</span>
-          ))}
-        </div>
-      </div>
-
-    </div>
-  </div>
-</motion.section>
-
-
-      {/* Internship Experience */}
-<motion.section
-  data-scroll-focus
-  id="experience"
-  className="section-focus-transition"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-
-  <div className="max-w-6xl mx-auto px-6 py-28">
-
-    <h3 className="text-2xl font-semibold text-slate-900 mb-14">
-      Internship Experience
-    </h3>
-
-    <p className="text-slate-600 mb-10 max-w-2xl">
-      Through internships, I gained practical industry exposure by contributing
-      to real-world software development and testing deliverables.
-    </p>
-
-    <div className="space-y-10 border-l-2 border-indigo-200 pl-6">
-
-      <div className="relative">
-        <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600"></span>
-
-        <div className="bg-slate-50 rounded-2xl p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">Software Engineer Intern</h4>
-          <p className="text-sm text-slate-500">OctaNet Services Pvt Ltd. | Remote (Bengaluru, Karnataka, India)</p>
-          <p className="text-sm text-slate-400 mb-4">Dec 2024 - Feb 2025</p>
-
-          <ul className="list-disc list-inside text-slate-600 text-sm space-y-2">
-            <li>Built and improved web application features in an internship environment</li>
-            <li>Collaborated on bug fixes, testing, and deployment-ready code updates</li>
-            <li>Worked with core software engineering practices including version control and code review</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="relative">
-        <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600"></span>
-
-        <div className="bg-slate-50 rounded-2xl p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">Software Development Intern</h4>
-          <p className="text-sm text-slate-500">TechCiti Software Consulting | Bengaluru</p>
-          <p className="text-sm text-slate-400 mb-4">Nov 2024 - Jan 2025</p>
-
-          <ul className="list-disc list-inside text-slate-600 text-sm space-y-2">
-            <li>Worked on secure data de-duplication and recovery systems</li>
-            <li>Implemented encryption-based access control mechanisms</li>
-            <li>Developed backend components using Java and SQL</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="relative">
-        <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-indigo-600"></span>
-
-        <div className="bg-slate-50 rounded-2xl p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">Software Testing Intern</h4>
-          <p className="text-sm text-slate-500">QSpiders CampusConnect | Bengaluru</p>
-          <p className="text-sm text-slate-400 mb-4">Mar 2023 - May 2023</p>
-
-          <ul className="list-disc list-inside text-slate-600 text-sm space-y-2">
-            <li>Designed and executed manual test cases</li>
-            <li>Worked with SQL queries for data validation</li>
-            <li>Basic automation exposure using Selenium WebDriver</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</motion.section>
-
-      {/* PROJECTS */}
-<motion.section
-  data-scroll-focus
-  id="projects"
-  className="section-focus-transition"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-
-  <div className="max-w-6xl mx-auto px-6 py-28">
-
-    <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-      Projects
-    </h3>
-
-    <p className="text-slate-600 mb-14 max-w-2xl">
-      A selection of academic and personal projects demonstrating my
-      skills in software development, backend systems, and problem-solving.
-    </p>
-
-    <div className="grid md:grid-cols-2 gap-10">
-
-      <div className="md:col-span-2 bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden border border-indigo-100">
-        <div className="p-6">
-          <p className="text-xs uppercase tracking-wide text-indigo-600 font-semibold">Featured Project</p>
-          <h4 className="font-semibold text-slate-900 text-xl mt-2">TripBuddy</h4>
-
-          <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-            Full-stack travel planning application to manage trip details, budgets, and itinerary workflows with a clean and responsive user experience.
-          </p>
-
-          <div className="flex flex-wrap gap-2 mt-4">
-            {["React", "Node.js", "Express.js", "MongoDB", "JavaScript"].map(t => (
-              <span
-                key={t}
-                className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600"
+      </nav>
+
+      <section className="relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 pt-28 pb-24 grid md:grid-cols-2 gap-14 items-center">
+          <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <p className="text-indigo-600 font-medium mb-3">Backend-Focused Software Developer</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">Java, Spring Boot, Node.js, AWS</h2>
+            <p className="mt-5 text-slate-600 max-w-xl leading-relaxed">
+              MCA graduate building secure, scalable backend systems and full-stack applications. Focused on API development,
+              cloud deployment, and production-ready engineering practices.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#projects" className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition">
+                View Projects
+              </a>
+              <a
+                href="/Venkatesha_S_Resume_2026.pdf"
+                download
+                className="px-6 py-3 rounded-lg border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition"
               >
-                {t}
-              </span>
+                Download Resume
+              </a>
+              <a
+                href="https://www.linkedin.com/in/venkatesha-agali2000/"
+                target="_blank"
+                rel="noreferrer"
+                className="px-6 py-3 rounded-lg border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition"
+              >
+                LinkedIn
+              </a>
+            </div>
+
+            <div className="mt-10 flex gap-10 text-sm text-slate-600">
+              <div>
+                <p className="text-xl font-semibold text-slate-900">7+</p>
+                <p>Projects</p>
+              </div>
+              <div>
+                <p className="text-xl font-semibold text-slate-900">3</p>
+                <p>Internships</p>
+              </div>
+              <div>
+                <p className="text-xl font-semibold text-slate-900">1</p>
+                <p>Publication</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="relative flex items-center justify-center z-10"
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="absolute w-72 h-72 rounded-full bg-indigo-100"></div>
+            <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl bg-white">
+              <img src="/profile.jpg" alt="Venkatesha S" className="w-full h-full object-cover object-[center_10%]" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <motion.section id="about" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-14">
+          <div>
+            <h3 className="text-2xl font-semibold text-slate-900 mb-6">About</h3>
+            <p className="text-slate-600 leading-relaxed mb-4">
+              I am a software developer focused on backend engineering, API design, and cloud deployment. I build
+              maintainable applications using Java, Spring Boot, Node.js, SQL, and Docker with emphasis on clean architecture,
+              security, and reliability.
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              I am targeting Software Developer, Backend Developer, Cloud Engineer, and Java Developer roles where I can
+              contribute to production systems and continue to grow through ownership-driven engineering work.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-semibold text-slate-900 mb-6">Education</h3>
+            <div className="space-y-8 border-l-2 border-indigo-200 pl-6">
+              <div>
+                <span className="text-sm text-indigo-600 font-medium">2023 - 2025</span>
+                <h4 className="mt-1 font-semibold text-slate-900">Master of Computer Applications (MCA)</h4>
+                <p className="text-slate-600 text-sm">AMC Engineering College, Bengaluru</p>
+                <p className="text-slate-500 text-sm">CGPA: 8.4 / 10</p>
+              </div>
+              <div>
+                <span className="text-sm text-indigo-600 font-medium">2020 - 2023</span>
+                <h4 className="mt-1 font-semibold text-slate-900">Bachelor of Computer Applications (BCA)</h4>
+                <p className="text-slate-600 text-sm">Vidyavahini First Grade College</p>
+                <p className="text-slate-500 text-sm">CGPA: 7.67 / 10</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section id="skills" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Technical Skills</h3>
+        <p className="text-slate-600 mb-10 max-w-2xl">Role-aligned stack focused on backend engineering, cloud readiness, and delivery quality.</p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {Object.entries(skills).map(([category, list]) => (
+            <div key={category} className="bg-white border border-slate-200 rounded-xl p-6">
+              <h4 className="font-medium text-slate-900 mb-4">{category}</h4>
+              <div className="flex flex-wrap gap-3">
+                {list.map((skill) => (
+                  <span key={skill} className="skill-chip">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section id="projects" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <h3 className="text-2xl font-semibold text-slate-900 mb-4">Projects</h3>
+          <p className="text-slate-600 mb-12 max-w-3xl">
+            Engineering projects structured around real use-cases with clear implementation ownership, production deployment,
+            and backend-first problem solving.
+          </p>
+
+          <div className="grid gap-8">
+            {featuredProjects.map((project) => (
+              <div key={project.title} className="rounded-2xl border border-indigo-100 bg-slate-50 p-7">
+                <p className="text-xs uppercase tracking-wide text-indigo-600 font-semibold">Featured Project</p>
+                <h4 className="text-xl font-semibold text-slate-900 mt-2">{project.title}</h4>
+                <p className="text-sm text-slate-600 mt-3 leading-relaxed"><span className="font-medium text-slate-900">Problem:</span> {project.problem}</p>
+                <p className="text-sm text-slate-600 mt-2 leading-relaxed"><span className="font-medium text-slate-900">Implementation:</span> {project.solution}</p>
+
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="text-xs px-3 py-1 rounded-full bg-white text-slate-600 border border-slate-200">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-3 mt-6">
+                  <a href={project.repo} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-100 transition">
+                    GitHub Repo
+                  </a>
+                  <a href={project.live} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 transition">
+                    Live Demo
+                  </a>
+                  {project.extra && (
+                    <a href={project.extra} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-100 transition">
+                      Backend API
+                    </a>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 mt-6">
+          <h4 className="text-lg font-semibold text-slate-900 mt-14 mb-6">Additional Projects</h4>
+          <div className="grid md:grid-cols-3 gap-6">
+            {moreProjects.map((project) => (
+              <div key={project.title} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition">
+                <h5 className="font-semibold text-slate-900 text-lg">{project.title}</h5>
+                <p className="text-sm text-slate-600 mt-3 leading-relaxed">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <a href={project.repo} target="_blank" rel="noreferrer" className="inline-block mt-5 text-sm font-medium text-indigo-600 hover:underline">
+                  View on GitHub
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section id="experience" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Experience</h3>
+        <p className="text-slate-600 mb-10 max-w-2xl">Internship experience focused on backend development, secure systems, and testing quality.</p>
+        <div className="space-y-7">
+          {experiences.map((item) => (
+            <div key={item.role} className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h4 className="font-semibold text-slate-900 text-lg">{item.role}</h4>
+              <p className="text-sm text-slate-600">{item.org}</p>
+              <p className="text-sm text-slate-500 mt-1">{item.meta}</p>
+              <ul className="list-disc list-inside text-slate-600 text-sm mt-4 space-y-2">
+                {item.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section id="github" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <h3 className="text-2xl font-semibold text-slate-900 mb-4">GitHub Visibility Plan</h3>
+            <p className="text-slate-600 leading-relaxed">
+              I maintain active repositories with production-focused projects in backend development, API design,
+              and cloud deployment.
+            </p>
+          </div>
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <p className="text-sm font-semibold text-slate-900 mb-3">Current focus</p>
+            <ul className="list-disc list-inside text-sm text-slate-600 space-y-2">
+              <li>Pin top backend and full-stack repositories with strong READMEs.</li>
+              <li>Add architecture notes, API endpoints, and deployment instructions.</li>
+              <li>Maintain consistent commits and issue-based development logs.</li>
+            </ul>
             <a
-              href="https://github.com/Venkateshagali/Tripbuddy"
+              href="https://github.com/Venkateshagali"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
+              className="inline-flex mt-5 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition"
             >
-              GitHub Repo
-            </a>
-            <a
-              href="https://tripbuddy-kappa.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 transition"
-            >
-              Live Demo
+              Open GitHub Profile
             </a>
           </div>
         </div>
-      </div>
+      </motion.section>
 
-      <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
-        <div className="p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">Online Scam Guide</h4>
-
-          <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-            Awareness-based web application designed to educate users
-            about online scams and provide cybersecurity guidance.
+      <motion.section id="publication" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Publication</h3>
+        <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 max-w-4xl">
+          <h4 className="font-semibold text-slate-900 text-lg">QPAUSE: Quantum-Immune Access Control for Sensitive Cloud Storage</h4>
+          <p className="text-slate-600 text-sm mt-4 leading-relaxed">
+            Proposed a secure cloud framework using encryption-led access control and keyword-searchable retrieval to improve
+            confidentiality and future-readiness against advanced computing threats.
           </p>
-
-          <div className="flex flex-wrap gap-2 mt-4">
-            {["HTML", "CSS", "JavaScript", "PHP", "MySQL"].map(t => (
-              <span key={t} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">{t}</span>
-            ))}
-          </div>
-
+          <p className="text-slate-500 text-sm mt-3">
+            Published in IJMRSET - International Journal of Multidisciplinary Research in Science, Engineering and Technology
+          </p>
           <a
-            href="https://github.com/Venkateshagali/online-scam-guide"
+            href="https://ijmrset.com/upload/168_QPAUSE%20QUANTUM-IMMUNE%20ACCESS.pdf"
             target="_blank"
             rel="noreferrer"
-            className="inline-block mt-6 text-sm font-medium text-indigo-600 hover:underline"
+            className="inline-block mt-6 px-5 py-2.5 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition"
           >
-            View on GitHub
+            Read Paper
           </a>
         </div>
-      </div>
+      </motion.section>
 
-      <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
-        <div className="p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">QPause - Quantum-Immune Access Control</h4>
+      <motion.section id="certificates" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <h3 className="text-2xl font-semibold text-slate-900 mb-4">Certifications and Conferences</h3>
+          <p className="text-slate-600 mb-10 max-w-2xl">Continuous learning through certifications, internships, and research-related conference participation.</p>
 
-          <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-            Secure cloud storage system implementing encryption-based
-            access control and privacy-focused data retrieval.
-          </p>
-
-          <div className="flex flex-wrap gap-2 mt-4">
-            {["Java", "JSP", "Servlets", "MySQL"].map(t => (
-              <span key={t} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">{t}</span>
+          <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+            {certificates.map((cert) => (
+              <div key={cert.id} className="snap-start min-w-[320px] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition p-4 flex flex-col items-center">
+                <img src={cert.image} alt={cert.title} className="max-h-72 object-contain transition-transform duration-300 hover:scale-105" />
+                <p className="mt-3 text-sm text-slate-600 text-center">{cert.title}</p>
+              </div>
             ))}
           </div>
-
-          <a
-            href="https://github.com/Venkateshagali/QPause"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block mt-6 text-sm font-medium text-indigo-600 hover:underline"
-          >
-            View on GitHub
-          </a>
         </div>
-      </div>
+      </motion.section>
 
-      <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
-        <div className="p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">Secure Data De-Duplication & Recovery</h4>
+      <motion.section id="contact" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Contact</h3>
+        <p className="text-slate-600 mb-10 max-w-2xl">Open to Software Developer, Backend Developer, Cloud Engineer, and Java Developer opportunities.</p>
 
-          <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-            Encryption-based system for efficient and secure cloud data
-            storage with de-duplication and recovery mechanisms.
-          </p>
-
-          <div className="flex flex-wrap gap-2 mt-4">
-            {["Java", "SQL", "HTML", "CSS", "JavaScript"].map(t => (
-              <span key={t} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">{t}</span>
-            ))}
-          </div>
-
-          <a
-            href="https://github.com/Venkateshagali/Data-secure-duplication-and-recovery-based-on-public-key-encryption-with-keyword-search"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block mt-6 text-sm font-medium text-indigo-600 hover:underline"
-          >
-            View on GitHub
-          </a>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
-        <div className="p-6">
-          <h4 className="font-semibold text-slate-900 text-lg">Movie Recommendation App</h4>
-
-          <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-            AI-style movie recommendation assistant with chat-like interactions,
-            delivering 5 curated movie suggestions based on user preferences.
-          </p>
-
-          <div className="flex flex-wrap gap-2 mt-4">
-            {["React", "Fastify", "OpenAI API", "Node.js", "Vercel"].map(t => (
-              <span key={t} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">{t}</span>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 mt-6">
-            <a
-              href="https://github.com/Venkateshagali/movie-recommendation-app"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
-            >
-              GitHub Repo
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white border border-slate-200 rounded-2xl p-7">
+            <p className="text-sm text-slate-400">Email</p>
+            <a href="mailto:venkateshagali2000@gmail.com" className="text-slate-900 font-medium hover:text-indigo-600">
+              venkateshagali2000@gmail.com
             </a>
-            <a
-              href="https://movie-recommendation-frontend-two.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 transition"
-            >
-              Live App
+
+            <p className="text-sm text-slate-400 mt-6">LinkedIn</p>
+            <a href="https://www.linkedin.com/in/venkatesha-agali2000/" target="_blank" rel="noreferrer" className="text-indigo-600 font-medium hover:underline">
+              linkedin.com/in/venkatesha-agali2000
             </a>
-            <a
-              href="https://movie-recommendation-backend-beryl.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
-            >
-              Backend API
+
+            <p className="text-sm text-slate-400 mt-6">GitHub</p>
+            <a href="https://github.com/Venkateshagali" target="_blank" rel="noreferrer" className="text-indigo-600 font-medium hover:underline">
+              github.com/Venkateshagali
             </a>
           </div>
-        </div>
-      </div>
 
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-7">
+            <p className="font-semibold text-slate-900">Quick Actions</p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <a href="/Venkatesha_S_Resume_2026.pdf" download className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition">
+                Download Resume
+              </a>
+              <a href="#projects" className="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 text-sm font-medium hover:bg-slate-100 transition">
+                View Projects
+              </a>
+            </div>
+            <p className="text-sm text-slate-500 mt-5">Location: Bengaluru, India | Last updated: March 2026</p>
+          </div>
+        </div>
+      </motion.section>
     </div>
-  </div>
-</motion.section>
-
-      {/* PUBLICATION */}
-<motion.section
-  data-scroll-focus
-  id="publication"
-  className="section-focus-transition"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-
-  <div className="max-w-6xl mx-auto px-6 py-28">
-
-    <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-      Research Publication
-    </h3>
-
-    <p className="text-slate-600 mb-12 max-w-2xl">
-      Published research work focusing on secure cloud storage and
-      quantum-resistant access control mechanisms.
-    </p>
-
-    <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 max-w-3xl">
-      <h4 className="font-semibold text-slate-900 text-lg">
-        QPAUSE: Quantum-Immune Access Control for Sensitive Cloud Storage
-      </h4>
-
-      <p className="text-slate-600 text-sm mt-4 leading-relaxed">
-        This paper proposes a privacy-friendly cloud storage framework
-        using encryption-based access control and keyword-searchable
-        encryption to ensure secure data access and resistance against
-        quantum computing threats.
-      </p>
-
-      <p className="text-slate-500 text-sm mt-3">
-        Published in <span className="font-medium">
-          IJMRSET - International Journal of Multidisciplinary Research in
-          Science, Engineering & Technology
-        </span>
-      </p>
-
-      <a
-        href="https://ijmrset.com/upload/168_QPAUSE%20QUANTUM-IMMUNE%20ACCESS.pdf"
-        target="_blank"
-        className="inline-block mt-6 px-5 py-2.5 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition"
-      >
-        Read Research Paper
-      </a>
-    </div>
-
-  </div>
-</motion.section>
-
-
-     {/* CERTIFICATES */}
-<motion.section
-  data-scroll-focus
-  id="certificates"
-  className="section-focus-transition"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-
-  <div className="max-w-6xl mx-auto px-6 py-28">
-
-    <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-      Certifications & Conferences
-    </h3>
-
-    <p className="text-slate-600 mb-10 max-w-2xl">
-      Professional certifications and academic conference participation
-      showcasing continuous learning and industry exposure.
-    </p>
-
-    <div className="flex gap-8 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
-
-
-      {certificates.map(cert => (
-  <div
-    key={cert.id}
-    className="snap-start min-w-[320px] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition p-4 flex flex-col items-center"
-  >
-    <img
-      src={cert.image}
-      alt={cert.title}
-      className="max-h-72 object-contain transition-transform duration-300 hover:scale-105"
-    />
-    <p className="mt-3 text-sm text-slate-600 text-center">
-      {cert.title}
-    </p>
-  </div>
-))}
-
-
-    </div>
-  </div>
-</motion.section>
-
-
-
-
-
-     {/* CONTACT */}
-<motion.section
-  data-scroll-focus
-  id="contact"
-  className="section-focus-transition"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-
-  <div className="max-w-6xl mx-auto px-6 py-28">
-
-    <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-      Get In Touch
-    </h3>
-
-    <p className="text-slate-600 mb-14 max-w-2xl">
-      Interested in working together or have a question?
-      Feel free to reach out - I'll get back to you.
-    </p>
-
-    <div className="grid md:grid-cols-2 gap-14 items-start">
-
-      {/* FORM */}
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-
-          emailjs
-            .sendForm(
-              "venkateshagali",
-              "venkateshagali2000",
-              e.target,
-              "k9M2VTHHzdMsN2Yjs"
-            )
-            .then(() => {
-              alert("Message sent successfully!")
-              e.target.reset()
-            })
-            .catch(() => {
-              alert("Failed to send message. Please try again.")
-            })
-        }}
-        className="bg-slate-50 rounded-2xl p-8 space-y-6 border border-slate-200"
-      >
-        <div>
-          <label className="block text-sm mb-1 text-slate-600">
-            Name
-          </label>
-          <input
-            type="text"
-            name="from_name"
-            required
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm mb-1 text-slate-600">
-            Email
-          </label>
-          <input
-            type="email"
-            name="from_email"
-            required
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm mb-1 text-slate-600">
-            Message
-          </label>
-          <textarea
-            name="message"
-            rows="4"
-            required
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          className="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition"
-        >
-          Send Message
-        </button>
-      </form>
-
-      {/* CONTACT INFO */}
-      <div className="space-y-6">
-        <div>
-          <p className="text-sm text-slate-400">Email</p>
-          <p className="text-slate-900 font-medium">
-            venkateshagali2000@gmail.com
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-slate-400">LinkedIn</p>
-          <a
-            href="https://www.linkedin.com/in/venkatesha-agali2000/"
-            target="_blank"
-            className="text-indigo-600 font-medium hover:underline"
-          >
-            linkedin.com/in/venkatesha-agali2000
-          </a>
-        </div>
-
-        <div>
-          <p className="text-sm text-slate-400">GitHub</p>
-          <a
-            href="https://github.com/Venkateshagali"
-            target="_blank"
-            className="text-indigo-600 font-medium hover:underline"
-          >
-            github.com/Venkateshagali
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</motion.section>
-
-    </div>
-  )
-}
-
-
-
-/* PROJECT CARD COMPONENT */
-function Project({ title, desc, tech, link }) {
-  return (
-    <motion.div
-  className="bg-white rounded-2xl shadow-sm hover:shadow-md transition"
-  whileHover={{ y: -6 }}
-  transition={{ type: "spring", stiffness: 300 }}
->
-
-      <h4 className="font-semibold text-lg">{title}</h4>
-      <p className="mt-3 text-slate-600 text-sm">{desc}</p>
-      <p className="mt-2 text-sm text-slate-500">Tech: {tech}</p>
-      <a
-        href={link}
-        target="_blank"
-        className="inline-block mt-4 text-sm text-indigo-600 hover:underline"
-      >
-        View on GitHub
-      </a>
-    </motion.div>
   )
 }
