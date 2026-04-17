@@ -19,14 +19,29 @@ const navItems = [
 ]
 
 const skills = {
-  Backend: ["Java", "Spring Boot", "Node.js", "Express.js", "REST APIs", "JSP/Servlets"],
-  "Cloud & DevOps": ["AWS EC2", "AWS S3", "Azure", "Docker", "CI/CD Concepts", "Vercel"],
-  Database: ["SQL", "MySQL", "Query Optimization", "Data Modeling"],
-  Testing: ["Selenium", "Manual Testing", "Test Case Design", "STLC/SDLC"],
-  Frontend: ["React", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
+  "Identity & Access": [
+    "Active Directory (AD)",
+    "User Provisioning",
+    "De-provisioning",
+    "Security Groups",
+    "Distribution Lists",
+    "Access Reviews",
+  ],
+  "Cloud & Infrastructure": ["Microsoft Azure Fundamentals", "Cloud Infrastructure", "IAM Concepts", "Secure Access Workflows"],
+  Development: ["Java", "Python", "SQL", "JavaScript", "HTML", "CSS", "JSP/Servlets"],
+  Testing: ["Manual Testing", "Selenium WebDriver", "SDLC", "STLC", "Database Validation"],
+  Tools: ["GitHub", "Postman", "Jira", "Visual Studio Code", "MySQL"],
 }
 
 const featuredProjects = [
+  {
+    title: "QPause - Quantum Immune Access Control System",
+    problem: "Sensitive cloud storage needs stronger access control and safer file retrieval workflows.",
+    solution:
+      "Worked on an academic cloud-security project using JSP, Servlets, and MySQL to support file upload, storage, retrieval, and keyword-based access concepts with a security-first approach.",
+    tech: ["JSP", "Servlets", "MySQL", "Java", "Cloud Security Concepts"],
+    repo: "https://github.com/Venkateshagali/QPause",
+  },
   {
     title: "TripBuddy",
     problem: "Trip planning across budget, itinerary, and activity notes is usually scattered across apps.",
@@ -36,59 +51,41 @@ const featuredProjects = [
     repo: "https://github.com/Venkateshagali/Tripbuddy",
     live: "https://tripbuddy-kappa.vercel.app/",
   },
-  {
-    title: "QPause - Quantum-Immune Access Control",
-    problem: "Cloud data systems need stronger privacy controls and resilient access models.",
-    solution:
-      "Implemented a privacy-focused cloud access prototype using encryption-oriented access control and secure searchable retrieval workflows.",
-    tech: ["Java", "JSP", "Servlets", "MySQL"],
-    repo: "https://github.com/Venkateshagali/QPause",
-  },
 ]
 
 const moreProjects = [
   {
     title: "Movie Recommendation App",
     description:
-      "Built a chat-style movie recommendation workflow with frontend and backend separation. Kept as an ongoing project and currently improving production stability.",
+      "Built a chat-style movie recommendation workflow with separate frontend and backend services while improving deployment stability and API flow handling.",
     tech: ["React", "Node.js", "Fastify", "OpenAI API", "Vercel"],
     repo: "https://github.com/Venkateshagali/movie-recommendation-app",
   },
   {
     title: "Secure Data De-Duplication & Recovery",
     description:
-      "Built a secure storage flow reducing duplicate cloud data while supporting controlled recovery using encryption-backed validation.",
+      "Studied secure storage concepts around duplicate file handling, hashing, encryption, and recovery-focused workflows backed by database operations.",
     tech: ["Java", "SQL", "JavaScript", "HTML", "CSS"],
     repo: "https://github.com/Venkateshagali/Data-secure-duplication-and-recovery-based-on-public-key-encryption-with-keyword-search",
   },
   {
-    title: "Online Scam Guide",
+    title: "Identity and Cloud Learning Track",
     description:
-      "Created an awareness platform describing scam patterns and cyber-safety actions with categorized educational content.",
-    tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    repo: "https://github.com/Venkateshagali/online-scam-guide",
+      "Ongoing hands-on learning focused on Azure fundamentals, Active Directory administration, access audits, and user lifecycle management practices.",
+    tech: ["Azure", "Active Directory", "IAM", "Documentation", "SOPs"],
+    repo: "https://github.com/Venkateshagali",
   },
 ]
 
 const experiences = [
   {
-    role: "Software Engineer Intern",
-    org: "OctaNet Services Pvt Ltd",
-    meta: "Remote | Dec 2024 - Feb 2025",
-    points: [
-      "Implemented and refined web application modules aligned to sprint goals and production-readiness expectations.",
-      "Resolved defects, validated fixes, and improved release quality through structured testing cycles.",
-      "Contributed through Git-based collaboration, code reviews, and documented handoffs.",
-    ],
-  },
-  {
-    role: "Software Development Intern",
-    org: "TechCiti Software Consulting",
+    role: "Software Developer Intern",
+    org: "TechCiti Software Consulting Pvt. Ltd.",
     meta: "Bengaluru | Nov 2024 - Jan 2025",
     points: [
-      "Developed backend components for secure data de-duplication and recovery flows using Java and SQL.",
-      "Worked on encryption-based access workflows to improve data protection in storage and retrieval.",
-      "Supported integration tasks and bug fixes for stable intern project delivery.",
+      "Provisioned and de-provisioned user accounts in Active Directory following onboarding and offboarding protocols for secure Day 1 access.",
+      "Managed Security Groups and Distribution Lists, including membership updates, nesting support, and audit checks.",
+      "Performed privileged-access reviews and documented SOPs for recurring identity management tasks.",
     ],
   },
   {
@@ -179,13 +176,21 @@ export default function App() {
       <section className="relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 pt-28 pb-24 grid md:grid-cols-2 gap-14 items-center">
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-indigo-600 font-medium mb-3">Hello, I'm</p>
+            <p className="text-indigo-600 font-medium mb-3">Azure-focused profile update</p>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">Venkatesha S</h2>
-            <p className="mt-4 text-xl text-slate-600">Software Developer | Cloud and Software Development</p>
+            <p className="mt-4 text-xl text-slate-600">Cloud and Identity-Focused Software Developer</p>
             <p className="mt-5 text-slate-600 max-w-xl leading-relaxed">
-              MCA graduate building secure, scalable backend systems and full-stack applications. Focused on API development,
-              cloud deployment, and production-ready engineering practices.
+              Recent MCA graduate with internship experience in Active Directory administration, user lifecycle management,
+              and Azure cloud fundamentals. Building a career around secure access, cloud infrastructure, and dependable software delivery.
             </p>
+
+            <div className="mt-6 flex flex-wrap gap-3 text-sm">
+              {["Active Directory", "Microsoft Azure Fundamentals", "User Lifecycle Management"].map((item) => (
+                <span key={item} className="px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
+                  {item}
+                </span>
+              ))}
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#contact" className="px-6 py-3 rounded-lg border border-indigo-200 text-indigo-700 font-medium hover:bg-indigo-50 transition">
@@ -213,16 +218,16 @@ export default function App() {
 
             <div className="mt-10 flex gap-10 text-sm text-slate-600">
               <div>
-                <p className="text-xl font-semibold text-slate-900">7+</p>
-                <p>Projects</p>
+                <p className="text-xl font-semibold text-slate-900">Azure</p>
+                <p>Cloud Track</p>
               </div>
               <div>
-                <p className="text-xl font-semibold text-slate-900">3</p>
+                <p className="text-xl font-semibold text-slate-900">2</p>
                 <p>Internships</p>
               </div>
               <div>
                 <p className="text-xl font-semibold text-slate-900">1</p>
-                <p>Publication</p>
+                <p>AD Focus</p>
               </div>
             </div>
           </motion.div>
@@ -247,13 +252,13 @@ export default function App() {
           <div>
             <h3 className="text-2xl font-semibold text-slate-900 mb-6">About</h3>
             <p className="text-slate-600 leading-relaxed mb-4">
-              I am a software developer focused on backend engineering, API design, and cloud deployment. I build
-              maintainable applications using Java, Spring Boot, Node.js, SQL, and Docker with emphasis on clean architecture,
-              security, and reliability.
+              I am building my career in cloud and identity-focused software work, with hands-on exposure to Active Directory,
+              onboarding and offboarding workflows, access reviews, and secure user administration. My recent learning path is
+              centered on Microsoft Azure fundamentals and practical infrastructure concepts.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              I am targeting Software Developer, Backend Developer, Cloud Engineer, and Java Developer roles where I can
-              contribute to production systems and continue to grow through ownership-driven engineering work.
+              Alongside cloud learning, I bring a development foundation in Java, SQL, JavaScript, and testing practices.
+              I am targeting Cloud, Identity Access Management, Azure support, and software development roles where I can keep growing through hands-on ownership.
             </p>
           </div>
 
@@ -279,7 +284,7 @@ export default function App() {
 
       <motion.section id="skills" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <h3 className="text-2xl font-semibold text-slate-900 mb-4">Technical Skills</h3>
-        <p className="text-slate-600 mb-10 max-w-2xl">Role-aligned stack focused on backend engineering, cloud readiness, and delivery quality.</p>
+        <p className="text-slate-600 mb-10 max-w-2xl">Updated to reflect current resume focus on Azure fundamentals, Active Directory administration, testing discipline, and software foundations.</p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(skills).map(([category, list]) => (
@@ -301,8 +306,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6 py-24">
           <h3 className="text-2xl font-semibold text-slate-900 mb-4">Projects</h3>
           <p className="text-slate-600 mb-12 max-w-3xl">
-            Engineering projects structured around real use-cases with clear implementation ownership, production deployment,
-            and backend-first problem solving.
+            Projects and learning work that connect software development with secure storage, cloud concepts, and practical implementation experience.
           </p>
 
           <div className="grid gap-8">
@@ -364,7 +368,7 @@ export default function App() {
 
       <motion.section id="experience" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <h3 className="text-2xl font-semibold text-slate-900 mb-4">Experience</h3>
-        <p className="text-slate-600 mb-10 max-w-2xl">Internship experience focused on backend development, secure systems, and testing quality.</p>
+        <p className="text-slate-600 mb-10 max-w-2xl">Internship experience spanning Active Directory operations, identity governance tasks, and software testing fundamentals.</p>
         <div className="space-y-7">
           {experiences.map((item) => (
             <div key={item.role} className="bg-white rounded-2xl border border-slate-200 p-6">
@@ -384,18 +388,17 @@ export default function App() {
       <motion.section id="github" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h3 className="text-2xl font-semibold text-slate-900 mb-4">GitHub Visibility Plan</h3>
+            <h3 className="text-2xl font-semibold text-slate-900 mb-4">Current Cloud Direction</h3>
             <p className="text-slate-600 leading-relaxed">
-              I maintain active repositories with production-focused projects in backend development, API design,
-              and cloud deployment.
+              My portfolio is now centered on cloud entry roles, identity administration, and software projects that show secure workflow thinking.
             </p>
           </div>
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
             <p className="text-sm font-semibold text-slate-900 mb-3">Current focus</p>
             <ul className="list-disc list-inside text-sm text-slate-600 space-y-2">
-              <li>Pin top backend and full-stack repositories with strong READMEs.</li>
-              <li>Add architecture notes, API endpoints, and deployment instructions.</li>
-              <li>Maintain consistent commits and issue-based development logs.</li>
+              <li>Strengthen Azure and cloud infrastructure fundamentals through hands-on learning.</li>
+              <li>Document Active Directory workflows, SOP-style tasks, and access governance exposure.</li>
+              <li>Keep development projects visible to show technical range beyond cloud administration.</li>
             </ul>
             <a
               href="https://github.com/Venkateshagali"
@@ -414,8 +417,8 @@ export default function App() {
         <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 max-w-4xl">
           <h4 className="font-semibold text-slate-900 text-lg">QPAUSE: Quantum-Immune Access Control for Sensitive Cloud Storage</h4>
           <p className="text-slate-600 text-sm mt-4 leading-relaxed">
-            Proposed a secure cloud framework using encryption-led access control and keyword-searchable retrieval to improve
-            confidentiality and future-readiness against advanced computing threats.
+            Explored a secure cloud framework using access control, protected storage, and keyword-searchable retrieval concepts
+            to strengthen confidentiality for sensitive file systems.
           </p>
           <p className="text-slate-500 text-sm mt-3">
             Published in IJMRSET - International Journal of Multidisciplinary Research in Science, Engineering and Technology
@@ -434,7 +437,7 @@ export default function App() {
       <motion.section id="certificates" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <div className="max-w-6xl mx-auto px-6 py-24">
           <h3 className="text-2xl font-semibold text-slate-900 mb-4">Certifications and Conferences</h3>
-          <p className="text-slate-600 mb-10 max-w-2xl">Continuous learning through certifications, internships, and research-related conference participation.</p>
+          <p className="text-slate-600 mb-10 max-w-2xl">Current learning highlights include software testing, Google Analytics, conference participation, and Microsoft Learn Azure coursework listed in the resume.</p>
 
           <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
             {certificates.map((cert) => (
@@ -449,7 +452,7 @@ export default function App() {
 
       <motion.section id="contact" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <h3 className="text-2xl font-semibold text-slate-900 mb-4">Contact</h3>
-        <p className="text-slate-600 mb-10 max-w-2xl">Open to Software Developer, Backend Developer, Cloud Engineer, and Java Developer opportunities.</p>
+        <p className="text-slate-600 mb-10 max-w-2xl">Open to Cloud, Azure support, IAM, software development, and entry-level infrastructure opportunities.</p>
 
         <div className="grid md:grid-cols-2 gap-8">
           <form onSubmit={handleContactSubmit} className="bg-white border border-slate-200 rounded-2xl p-7 space-y-5">
@@ -488,9 +491,9 @@ export default function App() {
 
           <div className="bg-white border border-slate-200 rounded-2xl p-7">
             <p className="text-xs uppercase tracking-wide text-indigo-600 font-semibold mb-2">Available for Hiring</p>
-            <h4 className="text-lg font-semibold text-slate-900">Hire Me for Backend and Cloud Projects</h4>
+            <h4 className="text-lg font-semibold text-slate-900">Hire Me for Cloud, IAM, and Software Roles</h4>
             <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-              I am open to full-time and internship opportunities in software development, backend engineering, cloud, and Java roles.
+              I am open to full-time and internship opportunities where I can support Azure-focused environments, identity operations, and software delivery while continuing to grow in cloud.
             </p>
 
             <div className="mt-6 border-t border-slate-200 pt-5">
@@ -523,7 +526,7 @@ export default function App() {
               </a>
             </div>
 
-            <p className="text-sm text-slate-500 mt-5">Location: Bengaluru, India | Last updated: March 2026</p>
+            <p className="text-sm text-slate-500 mt-5">Location: Bengaluru, India | Last updated: April 2026</p>
           </div>
 
         </div>
