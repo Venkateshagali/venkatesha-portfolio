@@ -176,7 +176,6 @@ export default function App() {
       <section className="relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 pt-28 pb-24 grid md:grid-cols-2 gap-14 items-center">
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-indigo-600 font-medium mb-3">Azure-focused profile update</p>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">Venkatesha S</h2>
             <p className="mt-4 text-xl text-slate-600">Cloud and Identity-Focused Software Developer</p>
             <p className="mt-5 text-slate-600 max-w-xl leading-relaxed">
