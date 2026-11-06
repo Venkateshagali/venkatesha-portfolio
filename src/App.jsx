@@ -12,7 +12,7 @@ const navItems = [
   ["about", "About"],
   ["skills", "Skills"],
   ["projects", "Projects"],
-  ["experience", "Experience"],
+  ["experience", "Professional Experience"],
   ["github", "GitHub"],
   ["certificates", "Certificates"],
   ["contact", "Contact"],
@@ -64,9 +64,21 @@ const moreProjects = [
 
 const experiences = [
   {
-    role: "Analyst",
+    role: "Analyst – Information and Cybersecurity",
     org: "Gallagher",
     meta: "May 2026 – Present",
+    scope: "Identity governance, directory administration, authentication, privileged access, and IT service management.",
+    tools: [
+      "One Identity Manager",
+      "SailPoint",
+      "Active Directory",
+      "PowerShell",
+      "Okta",
+      "Duo",
+      "Ping Identity",
+      "CyberArk",
+      "ServiceNow/ITIL",
+    ],
   },
   {
     role: "Software Developer Intern",
@@ -186,6 +198,31 @@ export default function App() {
         </div>
       </section>
 
+      <motion.section id="experience" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-10">Professional Experience</h3>
+        <div className="space-y-7">
+          {experiences.map((item) => (
+            <div key={item.role} className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h4 className="font-semibold text-slate-900 text-lg">{item.role}</h4>
+              <p className="text-sm text-slate-600">{item.org}</p>
+              <p className="text-sm text-slate-500 mt-1">{item.meta}</p>
+              {item.scope && (
+                <>
+                  <p className="text-sm text-slate-600 mt-4">{item.scope}</p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {item.tools.map((tool) => (
+                      <span key={tool} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
       <motion.section id="about" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-14">
           <div>
@@ -303,19 +340,6 @@ export default function App() {
               </div>
             ))}
           </div>
-        </div>
-      </motion.section>
-
-      <motion.section id="experience" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-        <h3 className="text-2xl font-semibold text-slate-900 mb-10">Experience</h3>
-        <div className="space-y-7">
-          {experiences.map((item) => (
-            <div key={item.role} className="bg-white rounded-2xl border border-slate-200 p-6">
-              <h4 className="font-semibold text-slate-900 text-lg">{item.role}</h4>
-              <p className="text-sm text-slate-600">{item.org}</p>
-              <p className="text-sm text-slate-500 mt-1">{item.meta}</p>
-            </div>
-          ))}
         </div>
       </motion.section>
 
