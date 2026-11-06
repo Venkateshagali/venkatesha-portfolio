@@ -64,6 +64,11 @@ const moreProjects = [
 
 const experiences = [
   {
+    role: "Analyst",
+    org: "Gallagher",
+    meta: "May 2026 – Present",
+  },
+  {
     role: "Software Developer Intern",
     org: "TechCiti Software Consulting Pvt. Ltd.",
     meta: "Bengaluru | Nov 2024 - Jan 2025",
@@ -127,7 +132,7 @@ export default function App() {
               href="#contact"
               className="px-3 py-2 rounded-lg border border-indigo-200 text-indigo-700 hover:bg-indigo-50 transition"
             >
-              Hire Me
+              Contact
             </a>
             <a
               href="https://github.com/Venkateshagali"
@@ -145,22 +150,11 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6 pt-28 pb-24 grid md:grid-cols-2 gap-14 items-center">
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">Venkatesha S</h2>
-            <p className="mt-4 text-xl text-slate-600">IAM Analyst | Identity Governance and Administration</p>
-            <p className="mt-5 text-slate-600 max-w-xl leading-relaxed">
-              Focused primarily on Identity Governance and Administration, with Privileged Access Management as a related area.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-3 text-sm">
-              {["Identity Governance (IGA)", "Privileged Access Management (PAM)"].map((item) => (
-                <span key={item} className="px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
-                  {item}
-                </span>
-              ))}
-            </div>
+            <p className="mt-4 text-xl text-slate-600">IAM Analyst | IGA &amp; PAM</p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#contact" className="px-6 py-3 rounded-lg border border-indigo-200 text-indigo-700 font-medium hover:bg-indigo-50 transition">
-                Hire Me
+                Contact
               </a>
               <a href="#projects" className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition">
                 View Projects
@@ -175,16 +169,6 @@ export default function App() {
               </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-10 text-sm text-slate-600">
-              <div>
-                <p className="text-xl font-semibold text-slate-900">Primary focus</p>
-                <p>Identity Governance</p>
-              </div>
-              <div>
-                <p className="text-xl font-semibold text-slate-900">Related area</p>
-                <p>Privileged Access</p>
-              </div>
-            </div>
           </motion.div>
 
           <motion.div
@@ -236,7 +220,6 @@ export default function App() {
 
       <motion.section id="skills" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <h3 className="text-2xl font-semibold text-slate-900 mb-4">IAM Skills and Tools</h3>
-        <p className="text-slate-600 mb-10 max-w-2xl">Identity Governance and Administration is my primary focus, with Privileged Access Management as a related area.</p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(skills).map(([category, list]) => (
@@ -324,8 +307,7 @@ export default function App() {
       </motion.section>
 
       <motion.section id="experience" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Relevant Experience</h3>
-        <p className="text-slate-600 mb-10 max-w-2xl">Professional experience includes an internship in software development and an internship in software testing.</p>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-10">Experience</h3>
         <div className="space-y-7">
           {experiences.map((item) => (
             <div key={item.role} className="bg-white rounded-2xl border border-slate-200 p-6">
@@ -340,18 +322,13 @@ export default function App() {
       <motion.section id="github" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h3 className="text-2xl font-semibold text-slate-900 mb-4">IAM Focus</h3>
+            <h3 className="text-2xl font-semibold text-slate-900 mb-4">GitHub Profile</h3>
             <p className="text-slate-600 leading-relaxed">
-              Identity Governance and Administration is my primary focus, with Privileged Access Management as a related area.
+              Explore my projects and code on GitHub.
             </p>
           </div>
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-            <p className="text-sm font-semibold text-slate-900 mb-3">Developing expertise in</p>
-            <ul className="list-disc list-inside text-sm text-slate-600 space-y-2">
-              <li>Identity governance</li>
-              <li>Automation</li>
-              <li>Security</li>
-            </ul>
+            <p className="text-sm font-semibold text-slate-900 mb-3">Projects and code</p>
             <a
               href="https://github.com/Venkateshagali"
               target="_blank"
@@ -404,7 +381,7 @@ export default function App() {
 
       <motion.section id="contact" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <h3 className="text-2xl font-semibold text-slate-900 mb-4">Contact</h3>
-        <p className="text-slate-600 mb-10 max-w-2xl">For IAM Analyst opportunities focused on Identity Governance and Administration, with Privileged Access Management as a related area.</p>
+        <p className="text-slate-600 mb-10 max-w-2xl">For questions or professional enquiries, please get in touch.</p>
 
         <div className="grid md:grid-cols-2 gap-8">
           <form onSubmit={handleContactSubmit} className="bg-white border border-slate-200 rounded-2xl p-7 space-y-5">
@@ -442,11 +419,8 @@ export default function App() {
           </form>
 
           <div className="bg-white border border-slate-200 rounded-2xl p-7">
-            <p className="text-xs uppercase tracking-wide text-indigo-600 font-semibold mb-2">IAM Analyst</p>
-            <h4 className="text-lg font-semibold text-slate-900">Identity Governance and Administration</h4>
-            <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-              Focused on IGA, with Privileged Access Management as a related area.
-            </p>
+            <p className="text-xs uppercase tracking-wide text-indigo-600 font-semibold mb-2">Contact</p>
+            <h4 className="text-lg font-semibold text-slate-900">Contact details</h4>
 
             <div className="mt-6 border-t border-slate-200 pt-5">
               <p className="text-sm text-slate-400">Email</p>
