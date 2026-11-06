@@ -19,18 +19,11 @@ const navItems = [
 ]
 
 const skills = {
-  "Identity & Access": [
-    "Active Directory (AD)",
-    "User Provisioning",
-    "De-provisioning",
-    "Security Groups",
-    "Distribution Lists",
-    "Access Reviews",
-  ],
-  "Cloud & Infrastructure": ["Microsoft Azure Fundamentals", "Cloud Infrastructure", "IAM Concepts", "Secure Access Workflows"],
-  Development: ["Java", "Python", "SQL", "JavaScript", "HTML", "CSS", "JSP/Servlets"],
-  Testing: ["Manual Testing", "Selenium WebDriver", "SDLC", "STLC", "Database Validation"],
-  Tools: ["GitHub", "Postman", "Jira", "Visual Studio Code", "MySQL"],
+  "Identity Governance": ["One Identity Manager", "SailPoint"],
+  "Directory and scripting": ["Active Directory", "PowerShell"],
+  "Authentication and access": ["Okta", "Duo", "Ping Identity"],
+  "Privileged Access": ["CyberArk"],
+  "IT service management": ["ServiceNow", "incidents", "tasks", "ITIL"],
 }
 
 const featuredProjects = [
@@ -38,29 +31,13 @@ const featuredProjects = [
     title: "QPause - Quantum Immune Access Control System",
     problem: "Sensitive cloud storage needs stronger access control and safer file retrieval workflows.",
     solution:
-      "Worked on an academic cloud-security project using JSP, Servlets, and MySQL to support file upload, storage, retrieval, and keyword-based access concepts with a security-first approach.",
-    tech: ["JSP", "Servlets", "MySQL", "Java", "Cloud Security Concepts"],
+      "Worked on an academic security project using JSP, Servlets, and MySQL to explore protected storage and access-control concepts.",
+    tech: ["JSP", "Servlets", "MySQL", "Java", "Access Control"],
     repo: "https://github.com/Venkateshagali/QPause",
-  },
-  {
-    title: "TripBuddy",
-    problem: "Trip planning across budget, itinerary, and activity notes is usually scattered across apps.",
-    solution:
-      "Built a full-stack travel planner with centralized trip data, budget tracking, and itinerary workflows. Structured backend APIs and responsive UI modules to simplify planning and updates.",
-    tech: ["React", "Node.js", "Express.js", "MongoDB", "JavaScript"],
-    repo: "https://github.com/Venkateshagali/Tripbuddy",
-    live: "https://tripbuddy-kappa.vercel.app/",
   },
 ]
 
 const moreProjects = [
-  {
-    title: "Movie Recommendation App",
-    description:
-      "Built a chat-style movie recommendation workflow with separate frontend and backend services while improving deployment stability and API flow handling.",
-    tech: ["React", "Node.js", "Fastify", "OpenAI API", "Vercel"],
-    repo: "https://github.com/Venkateshagali/movie-recommendation-app",
-  },
   {
     title: "Secure Data De-Duplication & Recovery",
     description:
@@ -69,11 +46,19 @@ const moreProjects = [
     repo: "https://github.com/Venkateshagali/Data-secure-duplication-and-recovery-based-on-public-key-encryption-with-keyword-search",
   },
   {
-    title: "Identity and Cloud Learning Track",
+    title: "TripBuddy",
     description:
-      "Ongoing hands-on learning focused on Azure fundamentals, Active Directory administration, access audits, and user lifecycle management practices.",
-    tech: ["Azure", "Active Directory", "IAM", "Documentation", "SOPs"],
-    repo: "https://github.com/Venkateshagali",
+      "Built a full-stack travel planner with centralized trip data, budget tracking, and itinerary workflows.",
+    tech: ["React", "Node.js", "Express.js", "MongoDB", "JavaScript"],
+    repo: "https://github.com/Venkateshagali/Tripbuddy",
+    live: "https://tripbuddy-kappa.vercel.app/",
+  },
+  {
+    title: "Movie Recommendation App",
+    description:
+      "Built a chat-style movie recommendation workflow with separate frontend and backend services.",
+    tech: ["React", "Node.js", "Fastify", "OpenAI API", "Vercel"],
+    repo: "https://github.com/Venkateshagali/movie-recommendation-app",
   },
 ]
 
@@ -82,21 +67,11 @@ const experiences = [
     role: "Software Developer Intern",
     org: "TechCiti Software Consulting Pvt. Ltd.",
     meta: "Bengaluru | Nov 2024 - Jan 2025",
-    points: [
-      "Provisioned and de-provisioned user accounts in Active Directory following onboarding and offboarding protocols for secure Day 1 access.",
-      "Managed Security Groups and Distribution Lists, including membership updates, nesting support, and audit checks.",
-      "Performed privileged-access reviews and documented SOPs for recurring identity management tasks.",
-    ],
   },
   {
     role: "Software Testing Intern",
     org: "QSpiders CampusConnect",
     meta: "Bengaluru | Mar 2023 - May 2023",
-    points: [
-      "Designed and executed manual test cases for functional and regression scenarios.",
-      "Used SQL validation queries to verify data correctness across workflows.",
-      "Performed baseline Selenium WebDriver automation for repeated test paths.",
-    ],
   },
 ]
 
@@ -155,13 +130,6 @@ export default function App() {
               Hire Me
             </a>
             <a
-              href="/Venkatesha_S_Resume_2026.pdf"
-              download
-              className="px-3 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 transition"
-            >
-              Resume
-            </a>
-            <a
               href="https://github.com/Venkateshagali"
               target="_blank"
               rel="noreferrer"
@@ -177,14 +145,13 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6 pt-28 pb-24 grid md:grid-cols-2 gap-14 items-center">
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">Venkatesha S</h2>
-            <p className="mt-4 text-xl text-slate-600">Cloud and Identity-Focused Software Developer</p>
+            <p className="mt-4 text-xl text-slate-600">IAM Analyst | Identity Governance and Administration</p>
             <p className="mt-5 text-slate-600 max-w-xl leading-relaxed">
-              Recent MCA graduate with internship experience in Active Directory administration, user lifecycle management,
-              and Azure cloud fundamentals. Building a career around secure access, cloud infrastructure, and dependable software delivery.
+              Focused primarily on Identity Governance and Administration, with Privileged Access Management as a related area.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
-              {["Active Directory", "Microsoft Azure Fundamentals", "User Lifecycle Management"].map((item) => (
+              {["Identity Governance (IGA)", "Privileged Access Management (PAM)"].map((item) => (
                 <span key={item} className="px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
                   {item}
                 </span>
@@ -199,13 +166,6 @@ export default function App() {
                 View Projects
               </a>
               <a
-                href="/Venkatesha_S_Resume_2026.pdf"
-                download
-                className="px-6 py-3 rounded-lg border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition"
-              >
-                Download Resume
-              </a>
-              <a
                 href="https://www.linkedin.com/in/venkatesha-agali2000/"
                 target="_blank"
                 rel="noreferrer"
@@ -215,18 +175,14 @@ export default function App() {
               </a>
             </div>
 
-            <div className="mt-10 flex gap-10 text-sm text-slate-600">
+            <div className="mt-10 flex flex-wrap gap-10 text-sm text-slate-600">
               <div>
-                <p className="text-xl font-semibold text-slate-900">Azure</p>
-                <p>Cloud Track</p>
+                <p className="text-xl font-semibold text-slate-900">Primary focus</p>
+                <p>Identity Governance</p>
               </div>
               <div>
-                <p className="text-xl font-semibold text-slate-900">2</p>
-                <p>Internships</p>
-              </div>
-              <div>
-                <p className="text-xl font-semibold text-slate-900">1</p>
-                <p>AD Focus</p>
+                <p className="text-xl font-semibold text-slate-900">Related area</p>
+                <p>Privileged Access</p>
               </div>
             </div>
           </motion.div>
@@ -251,13 +207,10 @@ export default function App() {
           <div>
             <h3 className="text-2xl font-semibold text-slate-900 mb-6">About</h3>
             <p className="text-slate-600 leading-relaxed mb-4">
-              I am building my career in cloud and identity-focused software work, with hands-on exposure to Active Directory,
-              onboarding and offboarding workflows, access reviews, and secure user administration. My recent learning path is
-              centered on Microsoft Azure fundamentals and practical infrastructure concepts.
+              IAM Analyst focused on Identity Governance and Administration, with hands-on experience across IGA and Privileged Access Management. Tools include One Identity Manager, SailPoint, Active Directory, PowerShell, Okta, Duo, Ping Identity, CyberArk, and ServiceNow.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              Alongside cloud learning, I bring a development foundation in Java, SQL, JavaScript, and testing practices.
-              I am targeting Cloud, Identity Access Management, Azure support, and software development roles where I can keep growing through hands-on ownership.
+              Building deeper expertise in identity governance, automation, and security.
             </p>
           </div>
 
@@ -282,8 +235,8 @@ export default function App() {
       </motion.section>
 
       <motion.section id="skills" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Technical Skills</h3>
-        <p className="text-slate-600 mb-10 max-w-2xl">Updated to reflect current resume focus on Azure fundamentals, Active Directory administration, testing discipline, and software foundations.</p>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-4">IAM Skills and Tools</h3>
+        <p className="text-slate-600 mb-10 max-w-2xl">Identity Governance and Administration is my primary focus, with Privileged Access Management as a related area.</p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(skills).map(([category, list]) => (
@@ -305,7 +258,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6 py-24">
           <h3 className="text-2xl font-semibold text-slate-900 mb-4">Projects</h3>
           <p className="text-slate-600 mb-12 max-w-3xl">
-            Projects and learning work that connect software development with secure storage, cloud concepts, and practical implementation experience.
+            Featured work related to security, access control, and protected data.
           </p>
 
           <div className="grid gap-8">
@@ -359,6 +312,11 @@ export default function App() {
                 <a href={project.repo} target="_blank" rel="noreferrer" className="inline-block mt-5 text-sm font-medium text-indigo-600 hover:underline">
                   View on GitHub
                 </a>
+                {project.live && (
+                  <a href={project.live} target="_blank" rel="noreferrer" className="inline-block mt-5 ml-4 text-sm font-medium text-indigo-600 hover:underline">
+                    Live Demo
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -366,19 +324,14 @@ export default function App() {
       </motion.section>
 
       <motion.section id="experience" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Experience</h3>
-        <p className="text-slate-600 mb-10 max-w-2xl">Internship experience spanning Active Directory operations, identity governance tasks, and software testing fundamentals.</p>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Relevant Experience</h3>
+        <p className="text-slate-600 mb-10 max-w-2xl">Professional experience includes an internship in software development and an internship in software testing.</p>
         <div className="space-y-7">
           {experiences.map((item) => (
             <div key={item.role} className="bg-white rounded-2xl border border-slate-200 p-6">
               <h4 className="font-semibold text-slate-900 text-lg">{item.role}</h4>
               <p className="text-sm text-slate-600">{item.org}</p>
               <p className="text-sm text-slate-500 mt-1">{item.meta}</p>
-              <ul className="list-disc list-inside text-slate-600 text-sm mt-4 space-y-2">
-                {item.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
             </div>
           ))}
         </div>
@@ -387,17 +340,17 @@ export default function App() {
       <motion.section id="github" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h3 className="text-2xl font-semibold text-slate-900 mb-4">Current Cloud Direction</h3>
+            <h3 className="text-2xl font-semibold text-slate-900 mb-4">IAM Focus</h3>
             <p className="text-slate-600 leading-relaxed">
-              My portfolio is now centered on cloud entry roles, identity administration, and software projects that show secure workflow thinking.
+              Identity Governance and Administration is my primary focus, with Privileged Access Management as a related area.
             </p>
           </div>
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-            <p className="text-sm font-semibold text-slate-900 mb-3">Current focus</p>
+            <p className="text-sm font-semibold text-slate-900 mb-3">Developing expertise in</p>
             <ul className="list-disc list-inside text-sm text-slate-600 space-y-2">
-              <li>Strengthen Azure and cloud infrastructure fundamentals through hands-on learning.</li>
-              <li>Document Active Directory workflows, SOP-style tasks, and access governance exposure.</li>
-              <li>Keep development projects visible to show technical range beyond cloud administration.</li>
+              <li>Identity governance</li>
+              <li>Automation</li>
+              <li>Security</li>
             </ul>
             <a
               href="https://github.com/Venkateshagali"
@@ -436,7 +389,7 @@ export default function App() {
       <motion.section id="certificates" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <div className="max-w-6xl mx-auto px-6 py-24">
           <h3 className="text-2xl font-semibold text-slate-900 mb-4">Certifications and Conferences</h3>
-          <p className="text-slate-600 mb-10 max-w-2xl">Current learning highlights include software testing, Google Analytics, conference participation, and Microsoft Learn Azure coursework listed in the resume.</p>
+          <p className="text-slate-600 mb-10 max-w-2xl">Selected certificates and conference participation.</p>
 
           <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
             {certificates.map((cert) => (
@@ -451,7 +404,7 @@ export default function App() {
 
       <motion.section id="contact" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <h3 className="text-2xl font-semibold text-slate-900 mb-4">Contact</h3>
-        <p className="text-slate-600 mb-10 max-w-2xl">Open to Cloud, Azure support, IAM, software development, and entry-level infrastructure opportunities.</p>
+        <p className="text-slate-600 mb-10 max-w-2xl">For IAM Analyst opportunities focused on Identity Governance and Administration, with Privileged Access Management as a related area.</p>
 
         <div className="grid md:grid-cols-2 gap-8">
           <form onSubmit={handleContactSubmit} className="bg-white border border-slate-200 rounded-2xl p-7 space-y-5">
@@ -489,10 +442,10 @@ export default function App() {
           </form>
 
           <div className="bg-white border border-slate-200 rounded-2xl p-7">
-            <p className="text-xs uppercase tracking-wide text-indigo-600 font-semibold mb-2">Available for Hiring</p>
-            <h4 className="text-lg font-semibold text-slate-900">Hire Me for Cloud, IAM, and Software Roles</h4>
+            <p className="text-xs uppercase tracking-wide text-indigo-600 font-semibold mb-2">IAM Analyst</p>
+            <h4 className="text-lg font-semibold text-slate-900">Identity Governance and Administration</h4>
             <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-              I am open to full-time and internship opportunities where I can support Azure-focused environments, identity operations, and software delivery while continuing to grow in cloud.
+              Focused on IGA, with Privileged Access Management as a related area.
             </p>
 
             <div className="mt-6 border-t border-slate-200 pt-5">
@@ -517,15 +470,12 @@ export default function App() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="/Venkatesha_S_Resume_2026.pdf" download className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition">
-                Download Resume
-              </a>
               <a href="#projects" className="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 text-sm font-medium hover:bg-slate-100 transition">
                 View Projects
               </a>
             </div>
 
-            <p className="text-sm text-slate-500 mt-5">Location: Bengaluru, India | Last updated: April 2026</p>
+            <p className="text-sm text-slate-500 mt-5">Location: Bengaluru, India</p>
           </div>
 
         </div>
