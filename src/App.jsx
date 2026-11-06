@@ -62,24 +62,25 @@ const moreProjects = [
   },
 ]
 
-const experiences = [
-  {
-    role: "Analyst – Information and Cybersecurity",
-    org: "Gallagher",
-    meta: "May 2026 – Present",
-    scope: "Identity governance, directory administration, authentication, privileged access, and IT service management.",
-    tools: [
-      "One Identity Manager",
-      "SailPoint",
-      "Active Directory",
-      "PowerShell",
-      "Okta",
-      "Duo",
-      "Ping Identity",
-      "CyberArk",
-      "ServiceNow/ITIL",
-    ],
-  },
+const currentRole = {
+  role: "Analyst – Information and Cybersecurity",
+  org: "Gallagher",
+  meta: "May 2026 – Present",
+  scope: "Identity governance, directory administration, authentication, privileged access, and IT service management.",
+  tools: [
+    "One Identity Manager",
+    "SailPoint",
+    "Active Directory",
+    "PowerShell",
+    "Okta",
+    "Duo",
+    "Ping Identity",
+    "CyberArk",
+    "ServiceNow/ITIL",
+  ],
+}
+
+const earlierInternships = [
   {
     role: "Software Developer Intern",
     org: "TechCiti Software Consulting Pvt. Ltd.",
@@ -200,26 +201,18 @@ export default function App() {
 
       <motion.section id="experience" className="max-w-6xl mx-auto px-6 py-24" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <h3 className="text-2xl font-semibold text-slate-900 mb-10">Professional Experience</h3>
-        <div className="space-y-7">
-          {experiences.map((item) => (
-            <div key={item.role} className="bg-white rounded-2xl border border-slate-200 p-6">
-              <h4 className="font-semibold text-slate-900 text-lg">{item.role}</h4>
-              <p className="text-sm text-slate-600">{item.org}</p>
-              <p className="text-sm text-slate-500 mt-1">{item.meta}</p>
-              {item.scope && (
-                <>
-                  <p className="text-sm text-slate-600 mt-4">{item.scope}</p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {item.tools.map((tool) => (
-                      <span key={tool} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
+        <div className="bg-white rounded-2xl border border-slate-200 p-6">
+          <h4 className="font-semibold text-slate-900 text-lg">{currentRole.role}</h4>
+          <p className="text-sm text-slate-600">{currentRole.org}</p>
+          <p className="text-sm text-slate-500 mt-1">{currentRole.meta}</p>
+          <p className="text-sm text-slate-600 mt-4">{currentRole.scope}</p>
+          <div className="flex flex-wrap gap-2 mt-4">
+            {currentRole.tools.map((tool) => (
+              <span key={tool} className="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+                {tool}
+              </span>
+            ))}
+          </div>
         </div>
       </motion.section>
 
@@ -384,6 +377,21 @@ export default function App() {
           >
             Read Paper
           </a>
+        </div>
+      </motion.section>
+
+      <motion.section id="earlier-internships" className="bg-white" initial="hidden" whileInView="visible" variants={reveal} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <h3 className="text-2xl font-semibold text-slate-900 mb-6">Earlier Internships</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {earlierInternships.map((internship) => (
+              <div key={internship.role} className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h4 className="font-semibold text-slate-900">{internship.role}</h4>
+                <p className="text-sm text-slate-600 mt-1">{internship.org}</p>
+                <p className="text-sm text-slate-500 mt-1">{internship.meta}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </motion.section>
 
